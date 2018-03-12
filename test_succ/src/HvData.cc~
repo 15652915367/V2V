@@ -1,0 +1,19 @@
+#include "HvData.h"
+
+/*	get speed  -from CAN or calculate from gps.			--usage
+*	
+*/
+HvData::HvData(){
+
+}
+
+void HvData::readSpeed(double &cur_x, double &cur_y){
+	return sqrt(pow(cur_x-trace[0].x,2)+pow(cur_y-trace[0].y,2))/0.1 ;
+}
+
+/*	use lng&lat to update trace info.			--usage
+*	nothing to say about para.					--para
+*/
+void HvData::update(double &lng, double &lat){
+	
+}

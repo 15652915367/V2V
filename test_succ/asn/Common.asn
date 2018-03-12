@@ -1,0 +1,257 @@
+Common
+DEFINITIONS
+AUTOMATIC TAGS ::=
+BEGIN
+	EXPORTS FLOAT,
+	DOUBLE,
+	MsgCount,
+	DYear,
+	DMonth,
+	DDay,
+	DHour,
+	DMinute,
+	DSecond,
+	DTimeOffset,
+	BasicVehicleClass,
+	Latitude,
+	Longitude,
+	Elevation,
+	Acceleration,
+	VerticalAcceleration,
+	YawRate,
+	TimeOffset,
+	CoarseHeading,
+	ResponsErrodCode,
+	TIMESTAMP,
+	AlertType,
+	Priority,
+	Radius,
+	Speed,
+	Heading,
+	SteeringWheelAngle,
+	Confidence,
+	ExteriorLights,
+	ThrottlePadel,
+	HornStatus,
+	PositionOffsetLLV,
+	PathPointList,
+	Radius,
+	Position3D,
+	Gps3D;
+	--定义浮点基本类型	
+	FLOAT ::= REAL
+	DOUBLE ::= REAL
+	--消息
+	MsgCount ::= INTEGER (0..127)
+	--公历年
+	DYear ::= INTEGER (0..4095)
+	--定义一年中的月份
+	DMonth ::= INTEGER (0..12)
+	--定义一月中的天数
+	DDay ::= INTEGER (0..31)
+	--定义一天中的小时数
+	DHour ::= INTEGER (0..31)
+	--定义一小时中的分钟
+	DMinute ::= INTEGER (0..60)
+	
+	--定义一分钟内的毫秒级别时刻秒数
+	DSecond ::= INTEGER (0..65535)
+	--定义和UTC的时间差分钟单位，用来确定时区
+	DTimeOffset ::= INTEGER (-840..840)
+	--车型
+	BasicVehicleClass ::= INTEGER (0..255)
+	--纬度
+	Latitude ::= INTEGER (-900000000..900000001)
+	--经度
+	Longitude ::= INTEGER (-1799999999..1800000001)
+	--海拔
+	Elevation ::= INTEGER (-4096..61439)
+	--加速度
+	Acceleration ::= INTEGER (-2000..2001)
+	--定义Z轴方向的加速度
+	VerticalAcceleration ::= INTEGER (-127..127)
+	--车辆横摆角速度
+	YawRate ::=INTEGER (-32767..32767)
+	--以10毫秒单位，定义当前描述时刻（较早）相对于参考地点（较晚）的偏差 用于车辆历史轨迹点的表达
+	TimeOffset ::= INTEGER (1..65535)
+	--定义粗粒度的车辆航向角
+	CoarseHeading ::= INTEGER (0..240)
+	--下行故障码
+	ResponsErrodCode ::= INTEGER (0..127)
+	--时间戳，精确到毫秒
+	TIMESTAMP ::= REAL
+	--定义路侧警示信息RSA的类型
+	AlertType ::= INTEGER (0..65535)
+	--消息优先级
+	Priority ::= OCTET STRING (SIZE(1))
+	--绝对半径值大小
+	Radius ::= INTEGER (0..1024)
+	--	定义速度Speed
+	Speed ::= INTEGER (0..8191)
+	   --Units of 0.02m/s
+	   --The value 8191 indicates that
+	   --speed is unavailable
+
+	--	定义车辆航向角度Heading
+	--为车头方向与正北方向的顺时针夹角。误差为0.0125°。
+	Heading ::= INTEGER (0..28800)
+     --LSB of 0.0125 degrees
+     --A range of 0 to 359.9875 degrees
+	
+	--方向盘转角
+	SteeringWheelAngle ::= INTEGER (-126..127)
+	--定义置信度
+	Confidence ::= INTEGER (0..200)
+	--灯光状态
+	ExteriorLights ::= BIT STRING {
+		  --All lights off is indicated by no bits set
+		lowBeamHeadlightsOn(0),
+		highBeamHeadlightsOn(1),
+		leftTurnSignalOn(2),
+		rightTurnSignalOn(3),
+		hazardSignalOn(4),
+		automaticLightControlOn(5),
+		daytimeRunningLightsOn(6),
+		fogLightOn(7),
+		parkingLightsOn(8)
+	}
+	--油门踏板状态
+	ThrottlePadel ::= ENUMERATED {
+	    unavailable(0), --不可用
+	    off(1), --未使用
+	    on(2) --使用中
+	}
+	--喇叭状态
+	HornStatus ::= ENUMERATED {
+	    unavailable(0),--不可用
+	    off(1),--没发声
+	    on(2) --发声中
+	}
+
+	--定义三维的相对位置（相对经纬度和相对高度）
+	PositionOffsetLLV ::= SEQUENCE {
+		offsetLL PositionOffsetLL,
+		offsetV VerticalOffset OPTIONAL
+	} 
+
+	PathPointList ::= SEQUENCE (SIZE(2..32)) OF PositionOffsetLLV
+	
+	--经纬度偏差
+	PositionOffsetLL ::= CHOICE {
+		--Locations with LL content Span at the equator when using a zoom of one 
+		position-LL1 Position-LL-24B,--within +-22. 634554 meters of the reference position 
+		position-LL2 Position-LL-28B,--within +-90. 571389 meters of the reference position 
+		position-LL3 Position-LL-32B,--within +-362. 31873 meters of the reference position 
+		position-LL4 Position-LL-36B,--within +-Ol. 449308 Kmeters of the reference position 
+		position-LL5 Position-LL-44B,--within +-23. 189096 Kmeters of the reference position 
+		position-LL6 Position-LL-48B,--within +-92. 756481 Kmeters of the reference position 
+		position-LatLon Position-LLmD-64b --node is a full 32b Lat/Lon range
+	}
+	--定义垂直方向位置偏差
+	VerticalOffset ::= CHOICE {
+			--Vertical Offset
+			--AU below in steps of IOcm above or below the reference ellipsoid 
+		offset1 VertOffset-B07,--with a range of +-6. 3 meters vertical 
+		offset2 VertOffset-B08,--with a range of +-12. 7 meters vertical 
+		offset3 VertOffset-B09,--with a range of +-25. 5 meters vertical 
+		offset4 VertOffset-B10,--with a range of +-51. 1 meters vertical 
+		offset5 VertOffset-B11,--with a range of +-102. 3 meters ver & cal 
+		offset6 VertOffset-B12,--with a range of +-204. 7 meters ver & ca]elevation 
+		elevation Elevation --with a range of-409. 5 to + 6143. 9 meters
+	}
+
+	--7~12比特的数据定义垂直方向（Z轴）关于参考点位置的偏差
+	VertOffset-B07 ::= INTEGER (-64..63)
+	VertOffset-B08 ::= INTEGER (-128..127)
+	VertOffset-B09 ::= INTEGER (-256..255)
+	VertOffset-B10 ::= INTEGER (-512..511)
+	VertOffset-B11 ::= INTEGER (-1024..1023)
+	VertOffset-B12 ::= INTEGER (-2048..2047)
+		
+	--定义24比特相对经纬度位置
+	Position-LL-24B ::= SEQUENCE {
+			--ranges of 0. 0008191 degrees
+			--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B12,
+		lat OffsetLL-B12	
+	}
+	--定义28比特相对经纬度位置
+	
+	Position-LL-28B ::= SEQUENCE {
+			--ranges of 0. 0008191 degrees
+			--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B14,
+		lat OffsetLL-B14	
+	}
+	--定义32比特相对经纬度位置
+	
+	Position-LL-32B ::= SEQUENCE {
+			--ranges of 0. 0008191 degrees
+			--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B16,
+		lat OffsetLL-B16	
+	}
+	--定义36比特相对经纬度位置
+	
+	Position-LL-36B ::= SEQUENCE {
+		--ranges of 0. 0008191 degrees
+		--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B18,
+		lat OffsetLL-B18	
+	}
+	--定义44比特相对经纬度位置
+	
+	Position-LL-44B ::= SEQUENCE {
+		--ranges of 0. 0008191 degrees
+		--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B22,
+		lat OffsetLL-B22	
+	}
+	--定义48比特相对经纬度位置
+	
+	Position-LL-48B ::= SEQUENCE {
+			--ranges of 0. 0008191 degrees
+			--ranges of 4-90. 571389 meters at the equator 
+		lon OffsetLL-B24,
+		lat OffsetLL-B24	
+	}
+	--定义28比特相对经纬度位置
+	
+	Position-LLmD-64b ::= SEQUENCE {
+			--ranges of 0. 0008191 degrees
+			--ranges of 4-90. 571389 meters at the equator 
+		lon Longitude,
+		lat Latitude	
+	}
+	--12~24比特的数值 表示当前位置点关于参考点的位置偏差
+	OffsetLL-B12 ::= INTEGER (-2048..2047)
+	OffsetLL-B14 ::= INTEGER (-8192..8191)
+	OffsetLL-B16 ::= INTEGER (-32768..32767)
+	OffsetLL-B18 ::= INTEGER (-131072..131071)
+	OffsetLL-B22 ::= INTEGER (-2097152..2097151)
+	OffsetLL-B24 ::= INTEGER (-8388608..8388607)
+	
+		--Position3D  三维坐标位置，包含经纬度和海拔高度
+	Position3D ::= SEQUENCE {
+	    lat Latitude,
+	    --in 1/10th micro degrees
+	    long Longitude,
+	    --in 1/10th micro degrees
+	    elevation Elevation OPTIONAL
+	    --in 10cm units
+	}
+		--Gps3D 三围gps信息，
+	Gps3D ::= SEQUENCE {
+	    latitude Latitude,
+	    --in 1/10th micro degrees
+	    longitude Longitude,
+	    --in 1/10th micro degrees
+	    elevation Elevation OPTIONAL,
+	    --in 10cm units
+	    speed Speed OPTIONAL,
+	    
+	    heading Heading OPTIONAL,
+	    
+	    timestamp  TIMESTAMP OPTIONAL
+	}
+END

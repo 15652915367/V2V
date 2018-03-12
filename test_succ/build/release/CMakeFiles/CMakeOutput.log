@@ -1,0 +1,249 @@
+The target system is: Linux - 1 - 
+The host system is: Linux - 3.13.0-32-generic - i686
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/2.8.12.2/CompilerIdC/a.out"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++ 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+
+The CXX compiler identification is GNU, found in "/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/2.8.12.2/CompilerIdCXX/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2148843634/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2148843634.dir/build.make CMakeFiles/cmTryCompileExec2148843634.dir/build
+make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2148843634.dir/testCCompiler.c.o
+/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc    -o CMakeFiles/cmTryCompileExec2148843634.dir/testCCompiler.c.o   -c /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2148843634
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2148843634.dir/link.txt --verbose=1
+/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc       CMakeFiles/cmTryCompileExec2148843634.dir/testCCompiler.c.o  -o cmTryCompileExec2148843634 -rdynamic 
+make[1]: Leaving directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec3136684359/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3136684359.dir/build.make CMakeFiles/cmTryCompileExec3136684359.dir/build
+make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o
+/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc    -o CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec3136684359
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3136684359.dir/link.txt --verbose=1
+/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc     -v CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3136684359 -rdynamic  
+Using built-in specs.
+Target: arm-none-linux-gnueabi
+Configured with: /opt/FriendlyARM/mini2440/build-toolschain/working/src/gcc-4.4.3/configure --build=i386-build_redhat-linux-gnu --host=i386-build_redhat-linux-gnu --target=arm-none-linux-gnueabi --prefix=/opt/FriendlyARM/toolschain/4.4.3 --with-sysroot=/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi//sys-root --enable-languages=c,c++ --disable-multilib --with-arch=armv4t --with-cpu=arm920t --with-tune=arm920t --with-float=soft --with-pkgversion=ctng-1.6.1 --disable-sjlj-exceptions --enable-__cxa_atexit --with-gmp=/opt/FriendlyARM/toolschain/4.4.3 --with-mpfr=/opt/FriendlyARM/toolschain/4.4.3 --with-ppl=/opt/FriendlyARM/toolschain/4.4.3 --with-cloog=/opt/FriendlyARM/toolschain/4.4.3 --with-mpc=/opt/FriendlyARM/toolschain/4.4.3 --with-local-prefix=/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi//sys-root --disable-nls --enable-threads=posix --enable-symvers=gnu --enable-c99 --enable-long-long --enable-target-optspace
+Thread model: posix
+gcc version 4.4.3 (ctng-1.6.1) 
+COMPILER_PATH=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.4.3/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/bin/
+LIBRARY_PATH=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3136684359' '-rdynamic' '-march=armv4t' '-mtune=arm920t' '-mfloat-abi=soft'
+ /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.4.3/collect2 --sysroot=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec3136684359 /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crt1.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crti.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtbegin.o -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3 -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtend.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crtn.o
+make[1]: Leaving directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-linux-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec3136684359/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3136684359.dir/build.make CMakeFiles/cmTryCompileExec3136684359.dir/build]
+  ignore line: [make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc    -o CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec3136684359]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3136684359.dir/link.txt --verbose=1]
+  ignore line: [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/arm-linux-gcc     -v CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3136684359 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [Target: arm-none-linux-gnueabi]
+  ignore line: [Configured with: /opt/FriendlyARM/mini2440/build-toolschain/working/src/gcc-4.4.3/configure --build=i386-build_redhat-linux-gnu --host=i386-build_redhat-linux-gnu --target=arm-none-linux-gnueabi --prefix=/opt/FriendlyARM/toolschain/4.4.3 --with-sysroot=/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi//sys-root --enable-languages=c,c++ --disable-multilib --with-arch=armv4t --with-cpu=arm920t --with-tune=arm920t --with-float=soft --with-pkgversion=ctng-1.6.1 --disable-sjlj-exceptions --enable-__cxa_atexit --with-gmp=/opt/FriendlyARM/toolschain/4.4.3 --with-mpfr=/opt/FriendlyARM/toolschain/4.4.3 --with-ppl=/opt/FriendlyARM/toolschain/4.4.3 --with-cloog=/opt/FriendlyARM/toolschain/4.4.3 --with-mpc=/opt/FriendlyARM/toolschain/4.4.3 --with-local-prefix=/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi//sys-root --disable-nls --enable-threads=posix --enable-symvers=gnu --enable-c99 --enable-long-long --enable-target-optspace]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.4.3 (ctng-1.6.1) ]
+  ignore line: [COMPILER_PATH=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.4.3/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/bin/]
+  ignore line: [LIBRARY_PATH=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib/:/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3136684359' '-rdynamic' '-march=armv4t' '-mtune=arm920t' '-mfloat-abi=soft']
+  link line: [ /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.4.3/collect2 --sysroot=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec3136684359 /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crt1.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crti.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtbegin.o -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3 -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib -L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtend.o /home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crtn.o]
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../libexec/gcc/arm-none-linux-gnueabi/4.4.3/collect2] ==> ignore
+    arg [--sysroot=/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec3136684359] ==> ignore
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crt1.o] ==> ignore
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crti.o] ==> ignore
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtbegin.o] ==> ignore
+    arg [-L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3] ==> dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3]
+    arg [-L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc] ==> dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc]
+    arg [-L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib] ==> dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib]
+    arg [-L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib] ==> dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib]
+    arg [-L/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib] ==> dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib]
+    arg [CMakeFiles/cmTryCompileExec3136684359.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/crtend.o] ==> ignore
+    arg [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3] ==> [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/lib/gcc/arm-none-linux-gnueabi/4.4.3]
+  collapse library dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc] ==> [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/lib/gcc]
+  collapse library dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../lib/gcc/arm-none-linux-gnueabi/4.4.3/../../../../arm-none-linux-gnueabi/lib] ==> [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/lib]
+  collapse library dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/lib] ==> [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/sys-root/lib]
+  collapse library dir [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/bin/../arm-none-linux-gnueabi//sys-root/usr/lib] ==> [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/sys-root/usr/lib]
+  implicit libs: [c]
+  implicit dirs: [/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/lib/gcc/arm-none-linux-gnueabi/4.4.3;/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/lib/gcc;/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/lib;/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/sys-root/lib;/home/idiot/Downloads/opt/FriendlyARM/toolschain/4.4.3/arm-none-linux-gnueabi/sys-root/usr/lib]
+  implicit fwks: []
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2107169329/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2107169329.dir/build.make CMakeFiles/cmTryCompileExec2107169329.dir/build
+make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2107169329.dir/testCXXCompiler.cxx.o
+/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++     -o CMakeFiles/cmTryCompileExec2107169329.dir/testCXXCompiler.cxx.o -c /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec2107169329
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2107169329.dir/link.txt --verbose=1
+/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++        CMakeFiles/cmTryCompileExec2107169329.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec2107169329 -rdynamic 
+make[1]: Leaving directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec2569934307/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2569934307.dir/build.make CMakeFiles/cmTryCompileExec2569934307.dir/build
+make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o
+/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++     -o CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec2569934307
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2569934307.dir/link.txt --verbose=1
+/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++      -v CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2569934307 -rdynamic  
+Using built-in specs.
+COLLECT_GCC=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++
+COLLECT_LTO_WRAPPER=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: /cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/src/gcc-linaro-4.9-2014.07/configure --build=i686-build_pc-linux-gnu --host=i686-build_pc-linux-gnu --target=arm-linux-gnueabihf --prefix=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install --with-sysroot=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install/arm-linux-gnueabihf/libc --enable-languages=c,c++,fortran --disable-multilib --enable-multiarch --with-arch=armv7-a --with-tune=cortex-a9 --with-fpu=vfpv3-d16 --with-float=hard --with-pkgversion='crosstool-NG linaro-1.13.1-4.9-2014.07 - Linaro GCC 4.9-2014.07' --with-bugurl=https://bugs.launchpad.net/gcc-linaro --enable-__cxa_atexit --enable-libmudflap --enable-libgomp --enable-libssp --with-gmp=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-mpfr=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-mpc=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-isl=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-cloog=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-libelf=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --enable-threads=posix --disable-libstdcxx-pch --enable-linker-build-id --enable-plugin --enable-gold --with-local-prefix=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install/arm-linux-gnueabihf/libc --enable-c99 --enable-long-long --with-mode=thumb --disable-multilib --with-float=hard
+Thread model: posix
+gcc version 4.9.1 20140710 (prerelease) (crosstool-NG linaro-1.13.1-4.9-2014.07 - Linaro GCC 4.9-2014.07) 
+COMPILER_PATH=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/bin/
+LIBRARY_PATH=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2569934307' '-rdynamic' '-shared-libgcc' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu'
+ /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/collect2 --sysroot=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec2569934307 /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crt1.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crti.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtbegin.o -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1 -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtend.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crtn.o
+make[1]: Leaving directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp'
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(arm-linux-ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec2569934307/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec2569934307.dir/build.make CMakeFiles/cmTryCompileExec2569934307.dir/build]
+  ignore line: [make[1]: Entering directory `/home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/idiot/Desktop/BQ_xiangmu/v2v/combine/test_succ/build/release/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++     -o CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec2569934307]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2569934307.dir/link.txt --verbose=1]
+  ignore line: [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++      -v CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec2569934307 -rdynamic  ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-g++]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/lto-wrapper]
+  ignore line: [Target: arm-linux-gnueabihf]
+  ignore line: [Configured with: /cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/src/gcc-linaro-4.9-2014.07/configure --build=i686-build_pc-linux-gnu --host=i686-build_pc-linux-gnu --target=arm-linux-gnueabihf --prefix=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install --with-sysroot=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install/arm-linux-gnueabihf/libc --enable-languages=c,c++,fortran --disable-multilib --enable-multiarch --with-arch=armv7-a --with-tune=cortex-a9 --with-fpu=vfpv3-d16 --with-float=hard --with-pkgversion='crosstool-NG linaro-1.13.1-4.9-2014.07 - Linaro GCC 4.9-2014.07' --with-bugurl=https://bugs.launchpad.net/gcc-linaro --enable-__cxa_atexit --enable-libmudflap --enable-libgomp --enable-libssp --with-gmp=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-mpfr=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-mpc=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-isl=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-cloog=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --with-libelf=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/.build/arm-linux-gnueabihf/build/static --enable-threads=posix --disable-libstdcxx-pch --enable-linker-build-id --enable-plugin --enable-gold --with-local-prefix=/cbuild/slaves/oorts/crosstool-ng/builds/arm-linux-gnueabihf-linux/install/arm-linux-gnueabihf/libc --enable-c99 --enable-long-long --with-mode=thumb --disable-multilib --with-float=hard]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.9.1 20140710 (prerelease) (crosstool-NG linaro-1.13.1-4.9-2014.07 - Linaro GCC 4.9-2014.07) ]
+  ignore line: [COMPILER_PATH=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/bin/]
+  ignore line: [LIBRARY_PATH=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/:/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec2569934307' '-rdynamic' '-shared-libgcc' '-march=armv7-a' '-mtune=cortex-a9' '-mfloat-abi=hard' '-mfpu=vfpv3-d16' '-mthumb' '-mtls-dialect=gnu']
+  link line: [ /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/collect2 --sysroot=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc --build-id --eh-frame-hdr -export-dynamic -dynamic-linker /lib/ld-linux-armhf.so.3 -X -m armelf_linux_eabi -o cmTryCompileExec2569934307 /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crt1.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crti.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtbegin.o -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1 -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf -L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtend.o /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crtn.o]
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../libexec/gcc/arm-linux-gnueabihf/4.9.1/collect2] ==> ignore
+    arg [--sysroot=/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc] ==> ignore
+    arg [--build-id] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib/ld-linux-armhf.so.3] ==> ignore
+    arg [-X] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec2569934307] ==> ignore
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crt1.o] ==> ignore
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crti.o] ==> ignore
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtbegin.o] ==> ignore
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf]
+    arg [-L/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib] ==> dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib]
+    arg [CMakeFiles/cmTryCompileExec2569934307.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/crtend.o] ==> ignore
+    arg [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf/crtn.o] ==> ignore
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc/arm-linux-gnueabihf/4.9.1]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc/arm-linux-gnueabihf]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../lib/gcc/arm-linux-gnueabihf/4.9.1/../../../../arm-linux-gnueabihf/lib] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/lib]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/lib] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/lib]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf]
+  collapse library dir [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/../arm-linux-gnueabihf/libc/usr/lib] ==> [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/usr/lib]
+  implicit libs: [stdc++;m;c]
+  implicit dirs: [/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc/arm-linux-gnueabihf/4.9.1;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc/arm-linux-gnueabihf;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/lib/gcc;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/lib;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/lib/arm-linux-gnueabihf;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/lib;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/usr/lib/arm-linux-gnueabihf;/home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/arm-linux-gnueabihf/libc/usr/lib]
+  implicit fwks: []
+
+

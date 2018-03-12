@@ -1,0 +1,14 @@
+g++ *.cc -o CONN  	\
+					\
+-I ./include \
+#-I ./include/connect_client_asn1c/  \
+#-I ./include/muduo/base/		\
+#-I ./include/muduo/cdns/ 	\
+#-I ./include/muduo/curl/ 	\
+#-I ./include/muduo/net/ 		\
+#-I  ./include/muduo/net/http/		\
+#-I  ./include/muduo/net/inspect/		\
+#-I  ./include/muduo/net/protobuf/	\
+#-I  ./include/muduo/net/protorpc/	\
+-lpthread -lrt -lcrypto  \
+-L ./lib/  -lconnect_client_asn1c

@@ -1,0 +1,373 @@
+ASN_MODULE_SOURCES=	\
+	FLOAT.c	\
+	DOUBLE.c	\
+	MsgCount.c	\
+	DYear.c	\
+	DMonth.c	\
+	DDay.c	\
+	DHour.c	\
+	DMinute.c	\
+	DSecond.c	\
+	DTimeOffset.c	\
+	BasicVehicleClass.c	\
+	Latitude.c	\
+	Longitude.c	\
+	Elevation.c	\
+	Acceleration.c	\
+	VerticalAcceleration.c	\
+	YawRate.c	\
+	TimeOffset.c	\
+	CoarseHeading.c	\
+	ResponsErrodCode.c	\
+	TIMESTAMP.c	\
+	AlertType.c	\
+	Priority.c	\
+	Radius.c	\
+	Speed.c	\
+	Heading.c	\
+	SteeringWheelAngle.c	\
+	Confidence.c	\
+	ExteriorLights.c	\
+	ThrottlePadel.c	\
+	HornStatus.c	\
+	PositionOffsetLLV.c	\
+	PathPointList.c	\
+	PositionOffsetLL.c	\
+	VerticalOffset.c	\
+	VertOffset-B07.c	\
+	VertOffset-B08.c	\
+	VertOffset-B09.c	\
+	VertOffset-B10.c	\
+	VertOffset-B11.c	\
+	VertOffset-B12.c	\
+	Position-LL-24B.c	\
+	Position-LL-28B.c	\
+	Position-LL-32B.c	\
+	Position-LL-36B.c	\
+	Position-LL-44B.c	\
+	Position-LL-48B.c	\
+	Position-LLmD-64b.c	\
+	OffsetLL-B12.c	\
+	OffsetLL-B14.c	\
+	OffsetLL-B16.c	\
+	OffsetLL-B18.c	\
+	OffsetLL-B22.c	\
+	OffsetLL-B24.c	\
+	Position3D.c	\
+	Gps3D.c	\
+	DemoRequestBody.c	\
+	TransmissionState.c	\
+	BrakePedalStatus.c	\
+	TractionControlStatus.c	\
+	AntiLockBrakeStatus.c	\
+	StabilityControlStatus.c	\
+	BrakeBoostApplied.c	\
+	AuxiliaryBrakeStatus.c	\
+	SpeedConfidence.c	\
+	HeadingConfidence.c	\
+	SteeringWheelAngleConfidence.c	\
+	PositionConfidence.c	\
+	ElevationConfidence.c	\
+	TimeConfidence.c	\
+	SmartCanRequestBody.c	\
+	WiperList.c	\
+	Wiper.c	\
+	FRONTWIPERSWITCH.c	\
+	FRONTWIPERINTERMSWITCH.c	\
+	REARWIPER.c	\
+	FRONTWASHINGSWITCH.c	\
+	LightList.c	\
+	Light.c	\
+	TURNINGLAMPSWITCH.c	\
+	EXTERIORLAMPSWITCH.c	\
+	FOGLAMPSWITCH.c	\
+	TELLTALEFRONTFOGLIGHT.c	\
+	TELLTALEREARFOGLIGHT.c	\
+	LOWBEAMINDICATOR.c	\
+	HIGHBEAMINDICATOR.c	\
+	BRAKELIGHTRIGHTACTIVE.c	\
+	BRAKELIGHTLEFTACTIVE.c	\
+	PARKLIGHTONWARNING.c	\
+	RunningList.c	\
+	Running.c	\
+	BreakPadelSwtichSts.c	\
+	VALIDACCELERATOR.c	\
+	TotalODO.c	\
+	VALIDWHEELSPEEDFL.c	\
+	VALIDWHEELSPEEDFR.c	\
+	VALIDWHEELSPEEDRL.c	\
+	VALIDWHEELSPEEDRR.c	\
+	VALIDVEHICLESPEED.c	\
+	SafetyList.c	\
+	Safety.c	\
+	ABSOPERATING.c	\
+	ESPAEBactive.c	\
+	ESPOPERATING.c	\
+	TCSOPERATING.c	\
+	EPSSTA.c	\
+	TCUTGSMode.c	\
+	TCUCurrentGearPosition.c	\
+	OthersList.c	\
+	Other.c	\
+	HANDBRAKE.c	\
+	AutoHorn.c	\
+	SmartCanResponseBody.c	\
+	V2VBsmJamMsg.c	\
+	BsmOrJam.c	\
+	JamLevel.c	\
+	BrakeAppliedStatus.c	\
+	PathHistory.c	\
+	FullPositionVector.c	\
+	PathHistoryPoint.c	\
+	DDateTime.c	\
+	GNSSstatus.c	\
+	PathHistoryPointList.c	\
+	VehicleClassification.c	\
+	PositionConfidenceSet.c	\
+	MotionConfidenceSet.c	\
+	AccelerationSet4Way.c	\
+	BrakeSystemStatus.c	\
+	VehicleSize.c	\
+	VehicleWidth.c	\
+	VehicleLength.c	\
+	VehicleHeight.c	\
+	VehicleSafetyExtensions.c	\
+	VehicleEventFlags.c	\
+	PathPrediction.c	\
+	RadiusOfCurvature.c	\
+	V2xBsmResponseBody.c
+
+ASN_MODULE_HEADERS=	\
+	FLOAT.h	\
+	DOUBLE.h	\
+	MsgCount.h	\
+	DYear.h	\
+	DMonth.h	\
+	DDay.h	\
+	DHour.h	\
+	DMinute.h	\
+	DSecond.h	\
+	DTimeOffset.h	\
+	BasicVehicleClass.h	\
+	Latitude.h	\
+	Longitude.h	\
+	Elevation.h	\
+	Acceleration.h	\
+	VerticalAcceleration.h	\
+	YawRate.h	\
+	TimeOffset.h	\
+	CoarseHeading.h	\
+	ResponsErrodCode.h	\
+	TIMESTAMP.h	\
+	AlertType.h	\
+	Priority.h	\
+	Radius.h	\
+	Speed.h	\
+	Heading.h	\
+	SteeringWheelAngle.h	\
+	Confidence.h	\
+	ExteriorLights.h	\
+	ThrottlePadel.h	\
+	HornStatus.h	\
+	PositionOffsetLLV.h	\
+	PathPointList.h	\
+	PositionOffsetLL.h	\
+	VerticalOffset.h	\
+	VertOffset-B07.h	\
+	VertOffset-B08.h	\
+	VertOffset-B09.h	\
+	VertOffset-B10.h	\
+	VertOffset-B11.h	\
+	VertOffset-B12.h	\
+	Position-LL-24B.h	\
+	Position-LL-28B.h	\
+	Position-LL-32B.h	\
+	Position-LL-36B.h	\
+	Position-LL-44B.h	\
+	Position-LL-48B.h	\
+	Position-LLmD-64b.h	\
+	OffsetLL-B12.h	\
+	OffsetLL-B14.h	\
+	OffsetLL-B16.h	\
+	OffsetLL-B18.h	\
+	OffsetLL-B22.h	\
+	OffsetLL-B24.h	\
+	Position3D.h	\
+	Gps3D.h	\
+	DemoRequestBody.h	\
+	TransmissionState.h	\
+	BrakePedalStatus.h	\
+	TractionControlStatus.h	\
+	AntiLockBrakeStatus.h	\
+	StabilityControlStatus.h	\
+	BrakeBoostApplied.h	\
+	AuxiliaryBrakeStatus.h	\
+	SpeedConfidence.h	\
+	HeadingConfidence.h	\
+	SteeringWheelAngleConfidence.h	\
+	PositionConfidence.h	\
+	ElevationConfidence.h	\
+	TimeConfidence.h	\
+	SmartCanRequestBody.h	\
+	WiperList.h	\
+	Wiper.h	\
+	FRONTWIPERSWITCH.h	\
+	FRONTWIPERINTERMSWITCH.h	\
+	REARWIPER.h	\
+	FRONTWASHINGSWITCH.h	\
+	LightList.h	\
+	Light.h	\
+	TURNINGLAMPSWITCH.h	\
+	EXTERIORLAMPSWITCH.h	\
+	FOGLAMPSWITCH.h	\
+	TELLTALEFRONTFOGLIGHT.h	\
+	TELLTALEREARFOGLIGHT.h	\
+	LOWBEAMINDICATOR.h	\
+	HIGHBEAMINDICATOR.h	\
+	BRAKELIGHTRIGHTACTIVE.h	\
+	BRAKELIGHTLEFTACTIVE.h	\
+	PARKLIGHTONWARNING.h	\
+	RunningList.h	\
+	Running.h	\
+	BreakPadelSwtichSts.h	\
+	VALIDACCELERATOR.h	\
+	TotalODO.h	\
+	VALIDWHEELSPEEDFL.h	\
+	VALIDWHEELSPEEDFR.h	\
+	VALIDWHEELSPEEDRL.h	\
+	VALIDWHEELSPEEDRR.h	\
+	VALIDVEHICLESPEED.h	\
+	SafetyList.h	\
+	Safety.h	\
+	ABSOPERATING.h	\
+	ESPAEBactive.h	\
+	ESPOPERATING.h	\
+	TCSOPERATING.h	\
+	EPSSTA.h	\
+	TCUTGSMode.h	\
+	TCUCurrentGearPosition.h	\
+	OthersList.h	\
+	Other.h	\
+	HANDBRAKE.h	\
+	AutoHorn.h	\
+	SmartCanResponseBody.h	\
+	V2VBsmJamMsg.h	\
+	BsmOrJam.h	\
+	JamLevel.h	\
+	BrakeAppliedStatus.h	\
+	PathHistory.h	\
+	FullPositionVector.h	\
+	PathHistoryPoint.h	\
+	DDateTime.h	\
+	GNSSstatus.h	\
+	PathHistoryPointList.h	\
+	VehicleClassification.h	\
+	PositionConfidenceSet.h	\
+	MotionConfidenceSet.h	\
+	AccelerationSet4Way.h	\
+	BrakeSystemStatus.h	\
+	VehicleSize.h	\
+	VehicleWidth.h	\
+	VehicleLength.h	\
+	VehicleHeight.h	\
+	VehicleSafetyExtensions.h	\
+	VehicleEventFlags.h	\
+	PathPrediction.h	\
+	RadiusOfCurvature.h	\
+	V2xBsmResponseBody.h
+
+ASN_MODULE_HEADERS+=BOOLEAN.h
+ASN_MODULE_SOURCES+=BOOLEAN.c
+ASN_MODULE_HEADERS+=INTEGER.h
+ASN_MODULE_HEADERS+=NativeEnumerated.h
+ASN_MODULE_SOURCES+=INTEGER.c
+ASN_MODULE_SOURCES+=NativeEnumerated.c
+ASN_MODULE_HEADERS+=NativeInteger.h
+ASN_MODULE_SOURCES+=NativeInteger.c
+ASN_MODULE_HEADERS+=NativeReal.h
+ASN_MODULE_SOURCES+=NativeReal.c
+ASN_MODULE_HEADERS+=REAL.h
+ASN_MODULE_SOURCES+=REAL.c
+ASN_MODULE_HEADERS+=VisibleString.h
+ASN_MODULE_SOURCES+=VisibleString.c
+ASN_MODULE_HEADERS+=asn_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=asn_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=asn_SET_OF.h
+ASN_MODULE_SOURCES+=asn_SET_OF.c
+ASN_MODULE_HEADERS+=constr_CHOICE.h
+ASN_MODULE_SOURCES+=constr_CHOICE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE.c
+ASN_MODULE_HEADERS+=constr_SEQUENCE_OF.h
+ASN_MODULE_SOURCES+=constr_SEQUENCE_OF.c
+ASN_MODULE_HEADERS+=constr_SET_OF.h
+ASN_MODULE_SOURCES+=constr_SET_OF.c
+ASN_MODULE_HEADERS+=asn_application.h
+ASN_MODULE_HEADERS+=asn_system.h
+ASN_MODULE_HEADERS+=asn_codecs.h
+ASN_MODULE_HEADERS+=asn_internal.h
+ASN_MODULE_HEADERS+=OCTET_STRING.h
+ASN_MODULE_SOURCES+=OCTET_STRING.c
+ASN_MODULE_HEADERS+=BIT_STRING.h
+ASN_MODULE_SOURCES+=BIT_STRING.c
+ASN_MODULE_SOURCES+=asn_codecs_prim.c
+ASN_MODULE_HEADERS+=asn_codecs_prim.h
+ASN_MODULE_HEADERS+=ber_tlv_length.h
+ASN_MODULE_SOURCES+=ber_tlv_length.c
+ASN_MODULE_HEADERS+=ber_tlv_tag.h
+ASN_MODULE_SOURCES+=ber_tlv_tag.c
+ASN_MODULE_HEADERS+=ber_decoder.h
+ASN_MODULE_SOURCES+=ber_decoder.c
+ASN_MODULE_HEADERS+=der_encoder.h
+ASN_MODULE_SOURCES+=der_encoder.c
+ASN_MODULE_HEADERS+=constr_TYPE.h
+ASN_MODULE_SOURCES+=constr_TYPE.c
+ASN_MODULE_HEADERS+=constraints.h
+ASN_MODULE_SOURCES+=constraints.c
+ASN_MODULE_HEADERS+=xer_support.h
+ASN_MODULE_SOURCES+=xer_support.c
+ASN_MODULE_HEADERS+=xer_decoder.h
+ASN_MODULE_SOURCES+=xer_decoder.c
+ASN_MODULE_HEADERS+=xer_encoder.h
+ASN_MODULE_SOURCES+=xer_encoder.c
+ASN_MODULE_HEADERS+=per_support.h
+ASN_MODULE_SOURCES+=per_support.c
+ASN_MODULE_HEADERS+=per_decoder.h
+ASN_MODULE_SOURCES+=per_decoder.c
+ASN_MODULE_HEADERS+=per_encoder.h
+ASN_MODULE_SOURCES+=per_encoder.c
+ASN_MODULE_HEADERS+=per_opentype.h
+ASN_MODULE_SOURCES+=per_opentype.c
+ASN_CONVERTER_SOURCES+=converter-sample.c
+
+
+lib_LTLIBRARIES=libsomething.la
+libsomething_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
+
+# This file may be used as an input for make(3)
+# Remove the lines below to convert it into a pure .am file
+TARGET = progname
+CC = /home/idiot/Downloads/linaro/gcc-linaro-arm-linux-gnueabihf-4.9-2014.07_linux/bin/arm-linux-gnueabihf-gcc
+CFLAGS += -I. -static
+OBJS=${ASN_MODULE_SOURCES:.c=.o} ${ASN_CONVERTER_SOURCES:.c=.o}
+
+all: $(TARGET)
+
+$(TARGET): ${OBJS}
+	$(CC) $(CFLAGS) -o $(TARGET) ${OBJS} $(LDFLAGS) $(LIBS)
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+
+.c.o:
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	rm -f $(TARGET)
+	rm -f $(OBJS)
+
+regen: regenerate-from-asn1-source
+
+regenerate-from-asn1-source:
+	asn1c -gen-PER Common.asn DemoRequest.asn Enumerateds.asn SmartCanRequest.asn SmartCanResponse.asn V2xBsmRequest.asn V2xBsmResponse.asn
+

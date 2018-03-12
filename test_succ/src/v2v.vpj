@@ -1,0 +1,560 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+	Version="10.0"
+	VendorName="SlickEdit"
+	TemplateName="GNU C/C++"
+	WorkingDir="."
+	BuildSystem="vsbuild">
+	<Config
+		Name="Debug"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdv2v"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ %xup -g -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<List Name="GNUC Options">
+			<Item
+				Name="LinkerOutputType"
+				Value="Executable"/>
+		</List>
+	</Config>
+	<Config
+		Name="Release"
+		Type="gnuc"
+		DebugCallbackName="gdb"
+		Version="1"
+		OutputFile="%bdv2v"
+		CompilerConfigName="Latest Version">
+		<Menu>
+			<Target
+				Name="Compile"
+				MenuCaption="&amp;Compile"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				OutputExts="*.o"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+			</Target>
+			<Target
+				Name="Link"
+				MenuCaption="&amp;Link"
+				ShowOnMenu="Never"
+				Dialog="_gnuc_options_form Link"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveCurrent"
+				RunFromDir="%rw">
+				<Exec CmdLine='g++ %xup -o "%o" %f %libs'/>
+			</Target>
+			<Target
+				Name="Build"
+				MenuCaption="&amp;Build"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t build'/>
+			</Target>
+			<Target
+				Name="Rebuild"
+				MenuCaption="&amp;Rebuild"
+				Dialog="_gnuc_options_form Compile"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%(VSLICKBIN1)vsbuild" "%w" "%r" -t rebuild'/>
+			</Target>
+			<Target
+				Name="Debug"
+				MenuCaption="&amp;Debug"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveNone"
+				RunFromDir="%rw">
+				<Exec CmdLine='vsdebugio -prog "%o"'/>
+			</Target>
+			<Target
+				Name="Execute"
+				MenuCaption="E&amp;xecute"
+				Dialog="_gnuc_options_form Run/Debug"
+				BuildFirst="1"
+				CaptureOutputWith="ProcessBuffer"
+				Deletable="0"
+				SaveOption="SaveWorkspaceFiles"
+				RunFromDir="%rw">
+				<Exec CmdLine='"%o"'/>
+			</Target>
+			<Target
+				Name="dash"
+				MenuCaption="-"
+				Deletable="0">
+				<Exec/>
+			</Target>
+			<Target
+				Name="GNU C Options"
+				MenuCaption="GNU C &amp;Options..."
+				ShowOnMenu="HideIfNoCmdLine"
+				Deletable="0"
+				SaveOption="SaveNone">
+				<Exec
+					CmdLine="gnucoptions"
+					Type="Slick-C"/>
+			</Target>
+		</Menu>
+		<List Name="GNUC Options">
+			<Item
+				Name="LinkerOutputType"
+				Value="Executable"/>
+		</List>
+	</Config>
+	<Files>
+		<Folder
+			Name="Source Files"
+			Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go">
+			<F N="AesUtility.cc"/>
+			<F N="CANbus.cpp"/>
+			<F N="CodecCrypt.cc"/>
+			<F N="CommonUtility.cc"/>
+			<F N="getGPS.cc"/>
+			<F N="HvData.cc"/>
+			<F N="main.cc"/>
+			<F N="readCSV/readCSV.cc"/>
+			<F N="RvData.cc"/>
+			<F N="RvMap.cc"/>
+			<F N="Scenes.cc"/>
+			<F N="Sock_2Android.cpp"/>
+			<F N="V2V.cpp"/>
+		</Folder>
+		<Folder
+			Name="Header Files"
+			Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.inc;*.sh;*.cpy;*.if">
+			<F N="include/v2v_asn1c/ABSOPERATING.h"/>
+			<F N="include/v2v_asn1c/Acceleration.h"/>
+			<F N="include/v2v_asn1c/AccelerationSet4Way.h"/>
+			<F N="AesUtility.h"/>
+			<F N="include/v2v_asn1c/AlertType.h"/>
+			<F N="include/v2v_asn1c/AntiLockBrakeStatus.h"/>
+			<F N="include/v2v_asn1c/asn_application.h"/>
+			<F N="include/v2v_asn1c/asn_codecs.h"/>
+			<F N="include/v2v_asn1c/asn_codecs_prim.h"/>
+			<F N="include/v2v_asn1c/asn_internal.h"/>
+			<F N="include/v2v_asn1c/asn_SEQUENCE_OF.h"/>
+			<F N="include/v2v_asn1c/asn_SET_OF.h"/>
+			<F N="include/v2v_asn1c/asn_system.h"/>
+			<F N="include/muduo/base/AsyncLogging.h"/>
+			<F N="include/muduo/base/Atomic.h"/>
+			<F N="include/v2v_asn1c/AutoHorn.h"/>
+			<F N="include/v2v_asn1c/AuxiliaryBrakeStatus.h"/>
+			<F N="include/v2v_asn1c/BasicVehicleClass.h"/>
+			<F N="include/v2v_asn1c/ber_decoder.h"/>
+			<F N="include/v2v_asn1c/ber_tlv_length.h"/>
+			<F N="include/v2v_asn1c/ber_tlv_tag.h"/>
+			<F N="include/v2v_asn1c/BIT_STRING.h"/>
+			<F N="include/muduo/base/BlockingQueue.h"/>
+			<F N="include/v2v_asn1c/BOOLEAN.h"/>
+			<F N="include/muduo/base/BoundedBlockingQueue.h"/>
+			<F N="include/v2v_asn1c/BrakeAppliedStatus.h"/>
+			<F N="include/v2v_asn1c/BrakeBoostApplied.h"/>
+			<F N="include/v2v_asn1c/BRAKELIGHTLEFTACTIVE.h"/>
+			<F N="include/v2v_asn1c/BRAKELIGHTRIGHTACTIVE.h"/>
+			<F N="include/v2v_asn1c/BrakePedalStatus.h"/>
+			<F N="include/v2v_asn1c/BrakeSystemStatus.h"/>
+			<F N="include/v2v_asn1c/BreakPadelSwtichSts.h"/>
+			<F N="include/v2v_asn1c/BsmOrJam.h"/>
+			<F N="include/muduo/net/Buffer.h"/>
+			<F N="include/muduo/net/protobuf/BufferStream.h"/>
+			<F N="include/muduo/net/Callbacks.h"/>
+			<F N="CANbus.h"/>
+			<F N="include/muduo/net/Channel.h"/>
+			<F N="Client.h"/>
+			<F N="include/v2v_asn1c/CoarseHeading.h"/>
+			<F N="CodecCrypt.h"/>
+			<F N="CommonUtility.h"/>
+			<F N="include/muduo/base/Condition.h"/>
+			<F N="include/v2v_asn1c/Confidence.h"/>
+			<F N="include/v2v_asn1c/constr_CHOICE.h"/>
+			<F N="include/v2v_asn1c/constr_SEQUENCE.h"/>
+			<F N="include/v2v_asn1c/constr_SEQUENCE_OF.h"/>
+			<F N="include/v2v_asn1c/constr_SET_OF.h"/>
+			<F N="include/v2v_asn1c/constr_TYPE.h"/>
+			<F N="include/v2v_asn1c/constraints.h"/>
+			<F N="include/muduo/base/copyable.h"/>
+			<F N="include/muduo/base/CountDownLatch.h"/>
+			<F N="include/muduo/curl/Curl.h"/>
+			<F N="include/muduo/base/CurrentThread.h"/>
+			<F N="include/muduo/base/Date.h"/>
+			<F N="include/v2v_asn1c/DDateTime.h"/>
+			<F N="include/v2v_asn1c/DDay.h"/>
+			<F N="include/v2v_asn1c/DemoRequestBody.h"/>
+			<F N="include/v2v_asn1c/der_encoder.h"/>
+			<F N="include/v2v_asn1c/DHour.h"/>
+			<F N="include/v2v_asn1c/DMinute.h"/>
+			<F N="include/v2v_asn1c/DMonth.h"/>
+			<F N="include/v2v_asn1c/DOUBLE.h"/>
+			<F N="include/v2v_asn1c/DSecond.h"/>
+			<F N="include/v2v_asn1c/DTimeOffset.h"/>
+			<F N="include/v2v_asn1c/DYear.h"/>
+			<F N="include/v2v_asn1c/Elevation.h"/>
+			<F N="include/v2v_asn1c/ElevationConfidence.h"/>
+			<F N="include/muduo/net/Endian.h"/>
+			<F N="include/v2v_asn1c/EPSSTA.h"/>
+			<F N="include/v2v_asn1c/ESPAEBactive.h"/>
+			<F N="include/v2v_asn1c/ESPOPERATING.h"/>
+			<F N="include/muduo/net/EventLoop.h"/>
+			<F N="include/muduo/net/EventLoopThread.h"/>
+			<F N="include/muduo/net/EventLoopThreadPool.h"/>
+			<F N="include/muduo/base/Exception.h"/>
+			<F N="include/v2v_asn1c/EXTERIORLAMPSWITCH.h"/>
+			<F N="include/v2v_asn1c/ExteriorLights.h"/>
+			<F N="include/muduo/base/FileUtil.h"/>
+			<F N="include/v2v_asn1c/FLOAT.h"/>
+			<F N="include/v2v_asn1c/FOGLAMPSWITCH.h"/>
+			<F N="include/v2v_asn1c/FRONTWASHINGSWITCH.h"/>
+			<F N="include/v2v_asn1c/FRONTWIPERINTERMSWITCH.h"/>
+			<F N="include/v2v_asn1c/FRONTWIPERSWITCH.h"/>
+			<F N="include/v2v_asn1c/FullPositionVector.h"/>
+			<F N="getGPS.h"/>
+			<F N="include/v2v_asn1c/GNSSstatus.h"/>
+			<F N="include/v2v_asn1c/Gps3D.h"/>
+			<F N="gpsTransformer.h"/>
+			<F N="include/muduo/base/GzipFile.h"/>
+			<F N="include/v2v_asn1c/HANDBRAKE.h"/>
+			<F N="include/v2v_asn1c/Heading.h"/>
+			<F N="include/v2v_asn1c/HeadingConfidence.h"/>
+			<F N="include/v2v_asn1c/HIGHBEAMINDICATOR.h"/>
+			<F N="include/v2v_asn1c/HornStatus.h"/>
+			<F N="include/muduo/net/http/HttpRequest.h"/>
+			<F N="include/muduo/net/http/HttpResponse.h"/>
+			<F N="include/muduo/net/http/HttpServer.h"/>
+			<F N="HvData.h"/>
+			<F N="include/muduo/net/InetAddress.h"/>
+			<F N="include/muduo/net/inspect/Inspector.h"/>
+			<F N="include/v2v_asn1c/INTEGER.h"/>
+			<F N="include/v2v_asn1c/JamLevel.h"/>
+			<F N="include/v2v_asn1c/Latitude.h"/>
+			<F N="include/v2v_asn1c/Light.h"/>
+			<F N="include/v2v_asn1c/LightList.h"/>
+			<F N="include/muduo/base/LogFile.h"/>
+			<F N="include/muduo/base/Logging.h"/>
+			<F N="include/muduo/base/LogStream.h"/>
+			<F N="include/v2v_asn1c/Longitude.h"/>
+			<F N="include/v2v_asn1c/LOWBEAMINDICATOR.h"/>
+			<F N="main.h"/>
+			<F N="include/v2v_asn1c/MotionConfidenceSet.h"/>
+			<F N="include/v2v_asn1c/MsgCount.h"/>
+			<F N="include/muduo/base/Mutex.h"/>
+			<F N="include/v2v_asn1c/NativeEnumerated.h"/>
+			<F N="include/v2v_asn1c/NativeInteger.h"/>
+			<F N="include/v2v_asn1c/NativeReal.h"/>
+			<F N="include/v2v_asn1c/OCTET_STRING.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B12.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B14.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B16.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B18.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B22.h"/>
+			<F N="include/v2v_asn1c/OffsetLL-B24.h"/>
+			<F N="include/v2v_asn1c/Other.h"/>
+			<F N="include/v2v_asn1c/OthersList.h"/>
+			<F N="include/v2v_asn1c/PARKLIGHTONWARNING.h"/>
+			<F N="include/v2v_asn1c/PathHistory.h"/>
+			<F N="include/v2v_asn1c/PathHistoryPoint.h"/>
+			<F N="include/v2v_asn1c/PathHistoryPointList.h"/>
+			<F N="include/v2v_asn1c/PathPointList.h"/>
+			<F N="include/v2v_asn1c/PathPrediction.h"/>
+			<F N="include/v2v_asn1c/per_decoder.h"/>
+			<F N="include/v2v_asn1c/per_encoder.h"/>
+			<F N="include/v2v_asn1c/per_opentype.h"/>
+			<F N="include/v2v_asn1c/per_support.h"/>
+			<F N="include/v2v_asn1c/Position-LL-24B.h"/>
+			<F N="include/v2v_asn1c/Position-LL-28B.h"/>
+			<F N="include/v2v_asn1c/Position-LL-32B.h"/>
+			<F N="include/v2v_asn1c/Position-LL-36B.h"/>
+			<F N="include/v2v_asn1c/Position-LL-44B.h"/>
+			<F N="include/v2v_asn1c/Position-LL-48B.h"/>
+			<F N="include/v2v_asn1c/Position-LLmD-64b.h"/>
+			<F N="include/v2v_asn1c/Position3D.h"/>
+			<F N="include/v2v_asn1c/PositionConfidence.h"/>
+			<F N="include/v2v_asn1c/PositionConfidenceSet.h"/>
+			<F N="include/v2v_asn1c/PositionOffsetLL.h"/>
+			<F N="include/v2v_asn1c/PositionOffsetLLV.h"/>
+			<F N="include/v2v_asn1c/Priority.h"/>
+			<F N="include/muduo/base/ProcessInfo.h"/>
+			<F N="include/muduo/net/protobuf/ProtobufCodecLite.h"/>
+			<F N="include/v2v_asn1c/Radius.h"/>
+			<F N="include/v2v_asn1c/RadiusOfCurvature.h"/>
+			<F N="readCSV/readCSV.h"/>
+			<F N="include/v2v_asn1c/REAL.h"/>
+			<F N="include/v2v_asn1c/REARWIPER.h"/>
+			<F N="include/muduo/cdns/Resolver.h"/>
+			<F N="include/v2v_asn1c/ResponsErrodCode.h"/>
+			<F N="include/muduo/net/protorpc/rpc.pb.h"/>
+			<F N="include/muduo/net/protorpc/RpcChannel.h"/>
+			<F N="include/muduo/net/protorpc/RpcCodec.h"/>
+			<F N="include/muduo/net/protorpc/RpcServer.h"/>
+			<F N="include/v2v_asn1c/Running.h"/>
+			<F N="include/v2v_asn1c/RunningList.h"/>
+			<F N="RvData.h"/>
+			<F N="RvMap.h"/>
+			<F N="include/v2v_asn1c/Safety.h"/>
+			<F N="include/v2v_asn1c/SafetyList.h"/>
+			<F N="Scenes.h"/>
+			<F N="include/muduo/base/Singleton.h"/>
+			<F N="include/v2v_asn1c/SmartCanRequestBody.h"/>
+			<F N="include/v2v_asn1c/SmartCanResponseBody.h"/>
+			<F N="Sock_2Android.h"/>
+			<F N="include/v2v_asn1c/Speed.h"/>
+			<F N="include/v2v_asn1c/SpeedConfidence.h"/>
+			<F N="include/v2v_asn1c/StabilityControlStatus.h"/>
+			<F N="include/v2v_asn1c/SteeringWheelAngle.h"/>
+			<F N="include/v2v_asn1c/SteeringWheelAngleConfidence.h"/>
+			<F N="include/muduo/base/StringPiece.h"/>
+			<F N="Struct.h"/>
+			<F N="include/muduo/net/TcpClient.h"/>
+			<F N="include/muduo/net/TcpConnection.h"/>
+			<F N="include/muduo/net/TcpServer.h"/>
+			<F N="include/v2v_asn1c/TCSOPERATING.h"/>
+			<F N="include/v2v_asn1c/TCUCurrentGearPosition.h"/>
+			<F N="include/v2v_asn1c/TCUTGSMode.h"/>
+			<F N="include/v2v_asn1c/TELLTALEFRONTFOGLIGHT.h"/>
+			<F N="include/v2v_asn1c/TELLTALEREARFOGLIGHT.h"/>
+			<F N="include/muduo/base/Thread.h"/>
+			<F N="include/muduo/base/ThreadLocal.h"/>
+			<F N="include/muduo/base/ThreadLocalSingleton.h"/>
+			<F N="include/muduo/base/ThreadPool.h"/>
+			<F N="include/v2v_asn1c/ThrottlePadel.h"/>
+			<F N="include/v2v_asn1c/TimeConfidence.h"/>
+			<F N="include/v2v_asn1c/TimeOffset.h"/>
+			<F N="include/muduo/net/TimerId.h"/>
+			<F N="include/v2v_asn1c/TIMESTAMP.h"/>
+			<F N="include/muduo/base/Timestamp.h"/>
+			<F N="include/muduo/base/TimeZone.h"/>
+			<F N="tools.h"/>
+			<F N="include/v2v_asn1c/TotalODO.h"/>
+			<F N="include/v2v_asn1c/TractionControlStatus.h"/>
+			<F N="include/v2v_asn1c/TransmissionState.h"/>
+			<F N="include/v2v_asn1c/TURNINGLAMPSWITCH.h"/>
+			<F N="include/muduo/base/Types.h"/>
+			<F N="V2V.h"/>
+			<F N="include/v2v_asn1c/V2VBsmJamMsg.h"/>
+			<F N="include/v2v_asn1c/V2xBsmResponseBody.h"/>
+			<F N="include/v2v_asn1c/VALIDACCELERATOR.h"/>
+			<F N="include/v2v_asn1c/VALIDVEHICLESPEED.h"/>
+			<F N="include/v2v_asn1c/VALIDWHEELSPEEDFL.h"/>
+			<F N="include/v2v_asn1c/VALIDWHEELSPEEDFR.h"/>
+			<F N="include/v2v_asn1c/VALIDWHEELSPEEDRL.h"/>
+			<F N="include/v2v_asn1c/VALIDWHEELSPEEDRR.h"/>
+			<F N="include/v2v_asn1c/VehicleClassification.h"/>
+			<F N="include/v2v_asn1c/VehicleEventFlags.h"/>
+			<F N="include/v2v_asn1c/VehicleHeight.h"/>
+			<F N="include/v2v_asn1c/VehicleLength.h"/>
+			<F N="include/v2v_asn1c/VehicleSafetyExtensions.h"/>
+			<F N="include/v2v_asn1c/VehicleSize.h"/>
+			<F N="include/v2v_asn1c/VehicleWidth.h"/>
+			<F N="include/v2v_asn1c/VerticalAcceleration.h"/>
+			<F N="include/v2v_asn1c/VerticalOffset.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B07.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B08.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B09.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B10.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B11.h"/>
+			<F N="include/v2v_asn1c/VertOffset-B12.h"/>
+			<F N="include/v2v_asn1c/VisibleString.h"/>
+			<F N="include/muduo/base/WeakCallback.h"/>
+			<F N="include/v2v_asn1c/Wiper.h"/>
+			<F N="include/v2v_asn1c/WiperList.h"/>
+			<F N="include/v2v_asn1c/xer_decoder.h"/>
+			<F N="include/v2v_asn1c/xer_encoder.h"/>
+			<F N="include/v2v_asn1c/xer_support.h"/>
+			<F N="include/v2v_asn1c/YawRate.h"/>
+		</Folder>
+		<Folder
+			Name="Resource Files"
+			Filters="*.ico;*.cur;*.dlg"/>
+		<Folder
+			Name="Bitmaps"
+			Filters="*.bmp"/>
+		<Folder
+			Name="Other Files"
+			Filters="">
+			<F N="CANbus.cpp~"/>
+			<F N="CANbus.h~"/>
+			<F N="Client.cc~"/>
+			<F N="CMakeLists.txt"/>
+			<F N="CMakeLists.txt~"/>
+			<F N="EventLoopThreadPool_test.cc~"/>
+			<F N="getGPS.cc~"/>
+			<F N="getGPS.h~"/>
+			<F N="HvData.cc~"/>
+			<F N="HvData.h~"/>
+			<F N="lib/libasnrt.a"/>
+			<F N="lib/boost/libboost_atomic.a"/>
+			<F N="lib/boost/libboost_chrono.a"/>
+			<F N="lib/boost/libboost_container.a"/>
+			<F N="lib/boost/libboost_coroutine.a"/>
+			<F N="lib/boost/libboost_date_time.a"/>
+			<F N="lib/boost/libboost_exception.a"/>
+			<F N="lib/boost/libboost_filesystem.a"/>
+			<F N="lib/boost/libboost_graph.a"/>
+			<F N="lib/boost/libboost_locale.a"/>
+			<F N="lib/boost/libboost_log.a"/>
+			<F N="lib/boost/libboost_log_setup.a"/>
+			<F N="lib/boost/libboost_math_c99.a"/>
+			<F N="lib/boost/libboost_math_c99f.a"/>
+			<F N="lib/boost/libboost_math_c99l.a"/>
+			<F N="lib/boost/libboost_math_tr1.a"/>
+			<F N="lib/boost/libboost_math_tr1f.a"/>
+			<F N="lib/boost/libboost_math_tr1l.a"/>
+			<F N="lib/boost/libboost_prg_exec_monitor.a"/>
+			<F N="lib/boost/libboost_program_options.a"/>
+			<F N="lib/boost/libboost_random.a"/>
+			<F N="lib/boost/libboost_regex.a"/>
+			<F N="lib/boost/libboost_serialization.a"/>
+			<F N="lib/boost/libboost_signals.a"/>
+			<F N="lib/boost/libboost_system.a"/>
+			<F N="lib/boost/libboost_test_exec_monitor.a"/>
+			<F N="lib/boost/libboost_thread.a"/>
+			<F N="lib/boost/libboost_timer.a"/>
+			<F N="lib/boost/libboost_type_erasure.a"/>
+			<F N="lib/boost/libboost_unit_test_framework.a"/>
+			<F N="lib/boost/libboost_wave.a"/>
+			<F N="lib/boost/libboost_wserialization.a"/>
+			<F N="lib/libconnect_client_asn1c.a"/>
+			<F N="lib/debug/libconnect_client_asn1c.a"/>
+			<F N="lib/release/libconnect_client_asn1c.a"/>
+			<F N="lib/libmuduo_base.a"/>
+			<F N="lib/debug/libmuduo_base.a"/>
+			<F N="lib/release/libmuduo_base.a"/>
+			<F N="lib/libmuduo_base_cpp11.a"/>
+			<F N="lib/debug/libmuduo_base_cpp11.a"/>
+			<F N="lib/release/libmuduo_base_cpp11.a"/>
+			<F N="lib/debug/libmuduo_cdns.a"/>
+			<F N="lib/release/libmuduo_cdns.a"/>
+			<F N="lib/debug/libmuduo_curl.a"/>
+			<F N="lib/release/libmuduo_curl.a"/>
+			<F N="lib/libmuduo_http.a"/>
+			<F N="lib/debug/libmuduo_http.a"/>
+			<F N="lib/release/libmuduo_http.a"/>
+			<F N="lib/libmuduo_inspect.a"/>
+			<F N="lib/debug/libmuduo_inspect.a"/>
+			<F N="lib/release/libmuduo_inspect.a"/>
+			<F N="lib/libmuduo_net.a"/>
+			<F N="lib/debug/libmuduo_net.a"/>
+			<F N="lib/release/libmuduo_net.a"/>
+			<F N="lib/libmuduo_net_cpp11.a"/>
+			<F N="lib/debug/libmuduo_net_cpp11.a"/>
+			<F N="lib/release/libmuduo_net_cpp11.a"/>
+			<F N="lib/debug/libmuduo_protobuf_codec.a"/>
+			<F N="lib/release/libmuduo_protobuf_codec.a"/>
+			<F N="lib/debug/libmuduo_protobuf_codec_cpp11.a"/>
+			<F N="lib/release/libmuduo_protobuf_codec_cpp11.a"/>
+			<F N="lib/debug/libmuduo_protorpc.a"/>
+			<F N="lib/release/libmuduo_protorpc.a"/>
+			<F N="lib/debug/libmuduo_protorpc_wire.a"/>
+			<F N="lib/release/libmuduo_protorpc_wire.a"/>
+			<F N="lib/debug/libmuduo_protorpc_wire_cpp11.a"/>
+			<F N="lib/release/libmuduo_protorpc_wire_cpp11.a"/>
+			<F N="lib/libmuduo_pubsub.a"/>
+			<F N="readCSV/LTA_hv.csv"/>
+			<F N="readCSV/LTA_rv.csv"/>
+			<F N="MessageHandler.cc~"/>
+			<F N="ReLogin.h~"/>
+			<F N="include/muduo/net/protorpc/rpc.proto"/>
+			<F N="include/muduo/net/protorpc/rpcservice.proto"/>
+			<F N="Scenes.cc~"/>
+			<F N="Sock_2Android.cpp~"/>
+			<F N="Sock_2Android.h~"/>
+			<F N="try.sh~"/>
+			<F N="v2v.vpj"/>
+			<F N="v2v.vpw"/>
+			<F N="v2v.vpwhistu"/>
+		</Folder>
+	</Files>
+</Project>

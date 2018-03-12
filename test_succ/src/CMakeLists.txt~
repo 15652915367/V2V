@@ -1,0 +1,70 @@
+# v2v
+set(
+    src_SRCS
+	CommonUtility.cc
+
+    main.cc
+	getGPS.cc
+	HvData.cc
+	V2V.cpp
+	Scenes.cc
+	RvData.cc
+	RvMap.cc
+	Sock_2Android.cpp
+	CANbus.cpp
+	readCSV/readCSV.cc
+	CodecCrypt.cc
+	AesUtility.cc
+)
+
+add_executable(v2v ${src_SRCS})
+target_link_libraries(
+    v2v 
+    ${STATIC_LIBRARIES_INPUT_PATH}/libv2v_asn.a
+    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_base.a
+    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_net.a
+    pthread
+    rt
+    #crypto
+	/usr/local/arm/openssl/lib/libcrypto.a
+	dl
+	m
+	#z
+	/home/idiot/Documents/zlib-1.2.11/libz.a
+)
+install(TARGETS v2v DESTINATION bin)
+
+
+
+
+# test_singleton
+#set(
+#    src_test_singleton_SRCS
+#    test/TestSingleton.cc
+#)
+#add_executable(test_singleton ${src_test_singleton_SRCS})
+#target_link_libraries(
+#    test_singleton
+#    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_base.a
+#    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_net.a
+#    pthread
+#    rt
+#)
+#install(TARGETS test_singleton DESTINATION bin)
+
+# test_demo_request
+#set(
+#    src_test_demo_request_SRCS
+#    test/TestDemoRequest.cc
+#    CommonUtility.cc
+#)
+#add_executable(test_demo_request ${src_test_demo_request_SRCS})
+#target_link_libraries(
+#    test_demo_request
+#    ${STATIC_LIBRARIES_INPUT_PATH}/libconnect_client_asn1c.a
+#    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_base.a
+#    ${STATIC_LIBRARIES_INPUT_PATH}/libmuduo_net.a
+#    pthread
+#    rt
+#)
+#install(TARGETS test_demo_request DESTINATION bin)

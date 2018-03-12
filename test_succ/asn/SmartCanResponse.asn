@@ -1,0 +1,18 @@
+SmartCanResponse
+DEFINITIONS
+AUTOMATIC TAGS ::=
+BEGIN
+
+IMPORTS
+	MsgCount, TIMESTAMP, ResponsErrodCode
+	FROM Common;
+
+	SmartCanResponseBody ::= SEQUENCE {
+		msgCnt MsgCount,
+		timestamp TIMESTAMP,
+		vid OCTET STRING(SIZE(17)),
+		msgStatus BOOLEAN,
+		errorCode ResponsErrodCode
+	}
+
+END

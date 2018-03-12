@@ -1,0 +1,148 @@
+#include "Client.h"
+#include "MessageHandler.h"
+#include "MessageDecoder.h"
+#include "CommonUtility.h"
+#include "Constant.h"
+#include "Message.h"
+#include "MessageDispatcher.h"
+#include "ConnectionData.h"
+
+/**
+ * Connect client.
+ * 
+ * @author guanghui.liu@youbiai.com
+ */
+class ConnectClient : boost::noncopyable {
+ public:
+    ConnectClient(muduo::net::EventLoop* loop, const muduo::net::InetAddress& listenAddress)
+        : loop_(loop),
+          client_(loop, listenAddress, "connect_client") {
+        client_.setConnectionCallback(
+            boost::bind(&ConnectClient::onConnection, this, _1));
+        client_.setMessageCallback(
+            boost::bind(&ConnectClient::onMessage, this, _1, _2, _3));
+        //client_.setWriteCompleteCallback(
+        //    boost::bind(&ConnectClient::onWriteComplete, this, _1));
+        //client_.enableRetry();
+    }
+
+    void connect() {
+        client_.connect();
+    }
+
+ private:
+    void onConnection(const muduo::net::TcpConnectionPtr& conn) {
+        LOG_INFO 
+            << conn->localAddress().toIpPort() 
+            << " -> "
+            << conn->peerAddress().toIpPort() 
+            << " is "
+            << (conn->connected() ? "up" : "down");
+
+        if (conn->connected()) {
+            // connect            
+            conn->setTcpNoDelay(true);                
+            
+            // make, encode and send
+            // login request message
+            MessageHandler::send(conn, LOGIN_REQUEST);
+//            MessageHandler::send(conn, LOGIN_RESPONSE);
+//            MessageHandler::send(conn, SYNC_REQUEST);
+//            MessageHandler::send(conn, SYNC_RESPONSE);
+//            MessageHandler::send(conn, SMART_CAN_REQUEST);
+//            MessageHandler::send(conn, SMART_CAN_RESPONSE);
+//            MessageHandler::send(conn, LOGOUT_REQUEST);
+//            MessageHandler::send(conn, LOGOUT_RESPONSE);                     
+//            MessageHandler::send(conn, V2X_BSM_REQUEST);
+//            MessageHandler::send(conn, V2X_BSM_RESPONSE);            
+//            MessageHandler::send(conn, DEMO_REQUEST);
+        } else {
+            // exit
+            LOG_INFO << "exit";
+            loop_->quit();
+        }
+    }
+
+    void onMessage(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buffer, muduo::Timestamp time) {        
+        getInformation(conn, buffer, time);
+
+        // receive and separate
+        while (buffer->readableBytes() >= NEED_READ_BYTE_HEADER_HEAD_PART) {
+            const char* data = buffer->peek();
+            uint8_t type = data[2];
+            uint16_t bodyLengthNetwork = 0;
+            memcpy(&bodyLengthNetwork, data + NEED_READ_BYTE_HEADER_HEAD_PART - 2 , 2);
+            uint16_t bodyLength = muduo::net::sockets::networkToHost16(bodyLengthNetwork);
+            uint32_t messageLength = NEED_READ_BYTE_HEADER_HEAD_PART + bodyLength + 1;
+            if (buffer->readableBytes() >= messageLength) {
+                LOG_INFO
+                    << "==================================================";
+                std::stringstream ss;
+                ss
+                    << "decode, plaintext, " 
+                    << messageLength 
+                    << ", 0x" 
+                    << std::hex                    
+                    << messageLength
+                    << " byte, 0x"
+                    << CommonUtility::byteArrayToHexString(buffer->peek(), messageLength);                
+                // decode
+                boost::shared_ptr<Message> m = MessageDecoder::decode(buffer, type, messageLength);                               
+                if (m != NULL) {
+                    ss
+                        << ", receive, "
+                        << m->toString();
+                }
+                LOG_INFO << ss.str();
+                // dispatch
+                MessageDispatcher::put(conn, m);
+            } else {
+                break;
+            }
+        }   
+    }
+
+    //void onWriteComplete(const muduo::net::TcpConnectionPtr& conn)
+    //{
+    //    LOG_INFO << "send complete";
+    //}
+
+    void getInformation(const muduo::net::TcpConnectionPtr& conn, muduo::net::Buffer* buffer, muduo::Timestamp time) {
+        std::stringstream ss;
+        ss
+            << conn->name() 
+            << ", receive, "
+            << buffer->readableBytes()
+            << ", 0x" 
+            << std::hex
+            << buffer->readableBytes()
+            << " byte, 0x"
+            << CommonUtility::byteArrayToHexString(buffer->peek(), buffer->readableBytes())
+            << ", "
+            << time.toFormattedString();
+        LOG_INFO << ss.str();
+    }
+
+    muduo::net::EventLoop* loop_;
+    muduo::net::TcpClient client_;
+};
+
+int main(int argc, char* argv[]) {
+    std::srand(std::time(NULL));        
+    LOG_INFO 
+        << "pid = " 
+        << getpid() 
+        << ", tid = " 
+        << muduo::CurrentThread::tid();
+    if (argc == 4) {
+        muduo::Singleton<ConnectionData>::instance().vid.assign(argv[1]);
+        muduo::net::EventLoop loop;
+        uint16_t port = static_cast<uint16_t>(atoi(argv[3]));
+        muduo::net::InetAddress serverAddress(argv[2], port);
+        ConnectClient client(&loop, serverAddress);
+        client.connect();     
+        loop.loop();
+    } else {
+        printf("usage: %s vid(8 characters) ip port\n", argv[0]);
+    }
+}

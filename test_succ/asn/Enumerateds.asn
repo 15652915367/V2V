@@ -1,0 +1,206 @@
+Enumerateds DEFINITIONS AUTOMATIC TAGS ::= BEGIN
+
+EXPORTS TransmissionState,
+		BrakePedalStatus,
+		TractionControlStatus,
+		AntiLockBrakeStatus,
+		StabilityControlStatus,
+		BrakeBoostApplied,
+		AuxiliaryBrakeStatus,
+		SpeedConfidence,
+		HeadingConfidence,
+		SteeringWheelAngleConfidence,
+		PositionConfidence,
+		ElevationConfidence,
+		TimeConfidence;
+
+			
+IMPORTS ;
+	--车辆档位状态   
+	TransmissionState ::= ENUMERATED {
+		neutral(0),--Neutral
+		park(1),--Park
+		forwardGears(2),--Forward gears
+		reverseGears(3),--Reverse gears
+		reserved1(4),
+		reserved2(5),
+		reserved3(6),
+		unavailable(7)--not-equipped or unavailable value,
+		   --Any related speed is relative to the vehicle reference frame used
+	}
+
+	--刹车踏板状态 
+	BrakePedalStatus ::= ENUMERATED {
+		unavailable(0),--Vehicle brake pedal detector is unavailable
+	    off(1),--Vehicle's brake padel is not pressed
+	    on(2) --Vehicle's brake padel is pressed
+	}
+
+	--牵引力控制系统实时状态
+	TractionControlStatus ::= ENUMERATED {
+		unavailable(0),--B'00 Not Equipped with traction control
+	    --or traction control status is unavailable
+		off(1),--B'01 traction control is Off
+		on(2),--B'10 traction control id On (but not Engaged)
+	    engaged(3) --B'll traction control is Engaged
+	}
+
+	
+
+	--ABS防抱死系统
+	AntiLockBrakeStatus ::= ENUMERATED {
+		unavailable(0),--B'00 Vehicle Not Equipped with ABS Brakes
+	    --or ABS Brakes status is unavailable
+	    off(1),--B'01 Vehicle's ABS are Off
+	    on(2),--B'10 Vehicle's ABS are On(but not Engaged)
+	    engaged(3) --B'll Vehicle's ABS control is Engaged on any wheel
+	}
+
+	--动态稳定控制系统状态
+	StabilityControlStatus ::= ENUMERATED {
+		unavailable(0), --B'00 Not Equipped with SC
+	      -- or SC status is unavailable
+		off(1),--B'01 Off
+		on(2),--B'10 On or active(but not engaged)
+		engaged(3) --B'll stability control is Engaged
+	}
+
+	-- 刹车辅助系统状态
+	BrakeBoostApplied ::= ENUMERATED {
+		unavailable(0), --Vehicle not equipped with brake boost
+	     -- or brake boost data is unavailable
+		off(1),--Vehicle's brake boost is off
+		on(2) --Vehicle's brake boost is on(applied)
+	}
+
+	--刹车辅助系统状态(一般指手刹)
+	AuxiliaryBrakeStatus ::= ENUMERATED {
+		unavailable(0), --B'00 Vehicle Not Equipped with Aux Brakes
+		--or Aux Brakes status is unavailable
+		off(1),--B'01 Vehicle's Aux Brakes are Off
+		on(2), --B'10 Vehicle's Aux Brakes are On(Engaged)
+		reserved(3) --B'll
+		}
+
+	--描述了95%置信水平的车速精度 
+	SpeedConfidence ::= ENUMERATED {
+		unavailable(0), --Not Equipped or unavailable
+	    prec100ms(1), --100 meters /sec
+	    prec10ms(2), --10 meters /sec
+	    prec5ms(3), --5 meters /sec
+	    prec1ms(4), --1 meters /sec
+	    prec0-1ms(5), --0.1 meters /sec
+	    prec0-05ms(6), --0.05 meters /sec
+	    prec0-01ms(7) --0.01 meters /sec
+	}
+
+	--描述了95%置信水平的车辆航向精度
+	HeadingConfidence ::= ENUMERATED {
+	    unavailable(0), --B'000 Not Equipped or unavailable
+	    prec10deg(1),--B'010 10 degrees
+	    prec05deg(2),--B'011 5 degrees
+	    prec01deg(3),--B'100 1 degrees
+	    prec0-1deg(4),--B'101 0.1 degrees
+	    prec0-05deg(5),--B'110 0.05 degrees
+	    prec0-01deg(6),--B'110 0.01 degrees
+	    prec0-0125deg(7)--B'111 0.0125 degrees,aligned with heading LSB
+	}
+	--描述了95%置信水平的方向盘转角精度 描述了95%置信水平的方向盘转角精度 
+	SteeringWheelAngleConfidence ::= ENUMERATED {
+	    unavailable(0), --B'000 Not Equipped with Wheel angle
+	    --or Wheel angle status is unavailable
+	    prec2deg(1),--B'01 2 degrees
+	    prec1deg(2),--B'10 1 degree
+	    prec0-02deg(3) --B'11 0.02 degrees
+	}
+
+	--描述了95%置信水平的车辆位置精度 
+	PositionConfidence ::= ENUMERATED {
+	    unavailable(0), --B'0000 Not Equipped or unavailable
+	    a500m(1),--B'0001 500m or about 5*10^-3 decimal degrees
+	    a200m(2),--B'0001 500m or about 2*10^-3 decimal degrees
+	    a100m(3),--B'0010 500m or about 1*10^-3 decimal degrees
+	    a50m(4),--B'0011 500m or about 5*10^-4 decimal degrees
+	    a20m(5),--B'0100 500m or about 2*10^-4 decimal degrees
+	    a10m(6),--B'0101 500m or about 1*10^-4 decimal degrees
+	    a5m(7),--B'0111 500m or about 5*10^-5 decimal degrees
+	    a2m(8),--B'1000 500m or about 2*10^-5 decimal degrees
+	    a1m(9),--B'1001 500m or about 1*10^-5 decimal degrees
+	    a50cm(10),--B'1010 500m or about 5*10^-6 decimal degrees
+	    a20cm(11),--B'1011 500m or about 2*10^-6 decimal degrees
+	    a10cm(12),--B'1100 500m or about 1*10^-6 decimal degrees
+	    a5cm(13),--B'1101 500m or about 5*10^-7 decimal degrees
+	    a2cm(14),--B'1110 500m or about 2*10^-7 decimal degrees
+	    a1cm(15)--B'1111 500m or about 1*10^-7 decimal degrees
+	} 
+
+	--描述了95%置信水平的车辆高程精度
+	ElevationConfidence ::= ENUMERATED {
+		unavailable(0), --B'0000 Not Equipped or unavailable
+		elev-500-00(1),--B'0001(500m)
+		elev-200-00(2),--B'0010(500m)
+		elev-100-00(3),--B'0011(500m)
+		elev-050-00(4),--B'0100(500m)
+		elev-020-00(5),--B'0101(500m)
+		elev-010-00(6),--B'0110(500m)
+		elev-005-00(7),--B'0111(500m)
+		elev-002-00(8),--B'1000(500m)
+		elev-001-00(9),--B'1001(500m)
+		elev-000-50(10),--B'1010(500m)
+		elev-000-20(11),--B'1011(500m)
+		elev-000-10(12),--B'1100(500m)
+		elev-000-05(13),--B'1101(500m)
+		elev-000-02(14),--B'1110(500m)
+		elev-000-01(15)--B'1111(500m)
+	}
+	
+	--数值描述了95%置信度的时间精度
+	TimeConfidence ::= ENUMERATED{
+		unavailable(0),--Not Equipped or unavailable 
+		time-100-000 (1),--Better than 100 Seconds 
+		time-050-000 (2),--Better than 50 Seconds 
+		time-020-000 (3),--Better than 20 Seconds 
+		time-010-000 (4),--Better than 10 Seconds 
+		time-002-000 (5),--Better than 2 Seconds 
+		tame-001-000 (6),--Better than 1 Second 
+		time-000-500 (7),--Better than 0. 5 Seconds 
+		time-000-200 (8),--Better than 0. 2 Seconds 
+		time-000-100 (9),--Better than 0. 1 Seconds 
+		time-000-050 (10),--Better than 0. 05 Seconds 
+		time-000-020 (11),--Better than 0. 02 Seconds 
+		time-000-010 (12),--Better than 0. 01 Seconds 
+		time-000-005 (13),--Better than 0. 005 Seconds 
+		time-000-002 (14),--Better than 0. 002 Seconds 
+		time-000-001 (15),--Better than 0. 001 Seconds
+		--Better than one millisecond 
+		time-000-000-5 (16),--Better than 0. 000, 5 Seconds 
+		time-000-000-2 (17),--Better than 0. 000, 2 Seconds 
+		time-000-000-1 (18),--Better than 0. 000, 1 Seconds 
+		time-000-000-05 (19),--Better than 0. 000. 05 Seconds 
+		time-000-000-02 (20),--Better than 0. 000. 02 Seconds 
+		time-000-000-01 (21),--Better than 0. 000, 01 Seconds 
+		time-000-000-005 (22),--Better than 0. 000, 005 Seconds 
+		time-000-000-002 (23),--Better than 0. 000, 002 Seconds 
+		time-000-000-001 (24),--Better than 0. 000, 001 Seconds
+		--Better than one micro second 
+		time-000-000-000-5 (25),--Better than 0. 000. 000, 5 Seconds 
+		time-000-000-000-2 (26),--Better than 0. 000. 000, 2 Seconds 
+		time-000-000-000-1 (27),--Better than 0. 000. 000, 1 Seconds 
+		time-000-000-000-05 (28),--Better than 0. 000, 000, 05 Seconds 
+		time-000-000-000-02 (29),--Better than 0. 000, 000, 02 Seconds 
+		time-000-000-000-01 (30),--B etter than 0. 000, 000, 01 Seconds 
+		time-000-000-000-005 (31),--Better than 0. 000. 000, 005 Seconds 
+		time-000-000-000-002 (32),--Better than 0. 000. 000, 002 Seconds 
+		time-000-000-000-001 (33),--Better than 0. 000. 000. 001 Seconds
+		--Better than one nano secmnd 
+		time-000-000-000-000-5 (34),--Better than 0. 000, 000, 000, 5 Seconds 
+		time-000-000-000-000-2 (35),--Better than 0. 000, 000, 000, 2 Seconds 
+		time-000-000-000-000-1 (36),--Better than 0. 000. 000, 000, 1 Seconds 
+		time-000-000-000-000-05 (37),--Better than 0. 000, 000, 000, 05 Seconds 
+		time-000-000-000-000-02 (38),--Better than 0. 000, 000, 000. 02 Seconds 
+		time-000-000-000-000-01 (39)--Better than 0. R)0 0, 000. 000, 01 Seconds
+	}
+
+	
+	
+END

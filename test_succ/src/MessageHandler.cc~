@@ -1,0 +1,840 @@
+#include "MessageHandler.h"
+#include "Constant.h"
+#include "MessageEncoder.h"
+#include "CommonUtility.h"
+#include "ConnectionData.h"
+#include "CollectData.h"
+#include "connect_client_asn1c/LoginRequestBody.h"
+#include "connect_client_asn1c/LoginResponseBody.h"
+#include "connect_client_asn1c/SyncRequestBody.h"
+#include "connect_client_asn1c/SyncResponseBody.h"
+#include "connect_client_asn1c/SmartCanRequestBody.h"
+#include "connect_client_asn1c/SmartCanResponseBody.h"
+#include "connect_client_asn1c/LogoutRequestBody.h"
+#include "connect_client_asn1c/LogoutResponseBody.h"
+#include "connect_client_asn1c/V2xBsmRequestBody.h"
+#include "connect_client_asn1c/V2xBsmResponseBody.h"
+
+#include "connect_client_asn1c/V2xRsiRequestBody.h"
+#include "connect_client_asn1c/V2xRsiResponseBody.h"
+#include "connect_client_asn1c/V2xEventRequestBody.h"
+#include "connect_client_asn1c/V2xEventResponseBody.h"
+
+#include "FileIO.h"
+#include "patch.h"
+
+MessageHandler::MessageHandler() {
+}
+
+MessageHandler::~MessageHandler() {
+}
+
+boost::shared_ptr<Message> MessageHandler::make(uint8_t messageType, bool setDefaultValue) {
+    boost::shared_ptr<Message> message;
+    switch (messageType) {
+        case LOGIN_REQUEST: {
+            message = boost::make_shared<Message>(
+                "login request", 
+                LOGIN_REQUEST,
+                &asn_DEF_LoginRequestBody);
+            message->body = new LoginRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setLoginRequestMessage(message);
+            }
+            break;
+        }
+
+        case LOGIN_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "login response", 
+                LOGIN_RESPONSE,
+                &asn_DEF_LoginResponseBody);
+            message->body = new LoginResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setLoginResponseMessage(message);
+            }            
+            break;
+        }
+
+        case SYNC_REQUEST: {
+            message = boost::make_shared<Message>(
+                "sync request", 
+                SYNC_REQUEST,
+                &asn_DEF_SyncRequestBody);
+            message->body = new SyncRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setSyncRequestMessage(message);
+            }
+            break;   
+        }   
+
+        case SYNC_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "sync response", 
+                SYNC_RESPONSE,
+                &asn_DEF_SyncResponseBody);
+            message->body = new SyncResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setSyncResponseMessage(message);
+            }    
+            break;   
+        }  
+
+        case SMART_CAN_REQUEST: {
+            message = boost::make_shared<Message>(
+                "smart can request", 
+                SMART_CAN_REQUEST,
+                &asn_DEF_SmartCanRequestBody);
+            message->body = new SmartCanRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setSmartCanRequestMessage(message);
+            }    
+            break;   
+        }  
+
+        case SMART_CAN_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "smart can response", 
+                SMART_CAN_RESPONSE,
+                &asn_DEF_SmartCanResponseBody);
+            message->body = new SmartCanResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setSmartCanResponseMessage(message);
+            }    
+            break;   
+        }  
+        
+        case LOGOUT_REQUEST: {
+            message = boost::make_shared<Message>(
+                "logout request", 
+                LOGOUT_REQUEST,
+                &asn_DEF_LogoutRequestBody);
+            message->body = new LogoutRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setLogoutRequestMessage(message);
+            }
+            break; 
+        }
+
+        case LOGOUT_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "logout response", 
+                LOGOUT_RESPONSE,
+                &asn_DEF_LogoutResponseBody);
+            message->body = new LogoutResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setLogoutResponseMessage(message);
+            }
+            break; 
+        }
+
+        case DEMO_REQUEST: {
+            message = boost::make_shared<Message>(
+                "demo request", 
+                DEMO_REQUEST,
+                &asn_DEF_DemoRequestBody);
+            message->body = new DemoRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setDemoRequestMessage(message);
+            }
+            break; 
+        }        
+
+        case V2X_BSM_REQUEST: {
+            message = boost::make_shared<Message>(
+                "v2x bsm request", 
+                V2X_BSM_REQUEST,
+                &asn_DEF_V2xBsmRequestBody);
+            message->body = new V2xBsmRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setV2xBsmRequestMessage(message);
+            }
+            break;
+        }
+
+        case V2X_BSM_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "v2x bsm response", 
+                V2X_BSM_RESPONSE,
+                &asn_DEF_V2xBsmResponseBody);
+            message->body = new V2xBsmResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setV2xBsmResponseMessage(message);
+            }
+            break;
+        }
+
+		case V2X_RSI_REQUEST: {
+            message = boost::make_shared<Message>(
+                "v2x rsi request", 
+                V2X_RSI_REQUEST,
+                &asn_DEF_V2xRsiRequestBody);
+            message->body = new V2xRsiRequestBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setV2xRsiRequestMessage(message);
+            }
+            break;
+        }
+
+		case V2X_RSI_RESPONSE: {
+            message = boost::make_shared<Message>(
+                "v2x rsi response", 
+                V2X_RSI_RESPONSE,
+                &asn_DEF_V2xRsiResponseBody);
+            message->body = new V2xRsiResponseBody();
+            if (true == setDefaultValue) {
+                MessageHandler::setV2xRsiResponseMessage(message);
+            }
+            break;
+        }
+		
+		case V2X_EVENT_REQUEST: {
+			LOG_INFO << "make_shared";
+            message = boost::make_shared<Message>(
+                "v2x event request", 
+                V2X_EVENT_REQUEST,
+                &asn_DEF_V2xEventRequestBody);
+			LOG_INFO << "V2xEventResponseBody";
+            message->body = new V2xEventRequestBody();
+            if (true == setDefaultValue) {
+				LOG_INFO << "setV2xEventResponseMessage";
+                MessageHandler::setV2xEventRequestMessage(message);
+            }
+            break;
+        }
+		
+        case V2X_EVENT_RESPONSE: {
+			
+            message = boost::make_shared<Message>(
+                "v2x event response", 
+                V2X_EVENT_RESPONSE,
+                &asn_DEF_V2xEventResponseBody);
+			
+            message->body = new V2xEventResponseBody();
+            if (true == setDefaultValue) {
+				
+                MessageHandler::setV2xEventResponseMessage(message);
+            }
+            break;
+        }
+
+		
+        default: {
+            break;
+        }
+    }
+    return message;
+}
+//发送数据包并存入文件
+void MessageHandler::send(const muduo::net::TcpConnectionPtr& conn, uint8_t messageType) {
+    LOG_INFO 
+        << "======================== "<<messageType<<" send"<<" =========================="; 
+	LOG_INFO 
+        << "make"; 
+	
+    boost::shared_ptr<Message> message = MessageHandler::make(messageType, true);
+	
+    
+//    xer_fprint(stdout, message->asnType, message->body);            
+    
+    if (message != NULL) {
+        muduo::net::Buffer b;
+
+		if(messageType == LOGIN_REQUEST){
+			MessageEncoder::encode(&b, message.get());
+			LOG_INFO
+				<<"\n\n\n\n login send  "<<"\n\n\n\n";
+		}
+		else{
+			char encodedBuf[MESSAGE_MAXIMUM_LENGTH] = "";
+			long encodedBufLength = 0;
+	        MessageEncoder::encode(&b, message.get(), encodedBuf, encodedBufLength);
+			inFile(message, messageType, encodedBuf, encodedBufLength);
+			LOG_INFO
+				<<"\n\n\n\nsend  "<<encodedBufLength<<"\n"<<encodedBuf<<"\n\n\n\n";
+		}
+		
+		
+		
+        muduo::StringPiece sp = b.toStringPiece();                    
+        std::stringstream ss;
+        ss
+            << "encode, " 
+            << sp.size() 
+            << ", 0x" 
+            << std::hex
+            << sp.size()
+            << " byte, 0x"
+            << CommonUtility::byteArrayToHexString(sp.data(), sp.size())
+            << ", send, "
+            << message->toString(); 
+		
+        LOG_INFO << ss.str();  
+    	
+        conn->send(&b);     
+        LOG_INFO 
+            << "send message count=" 
+            << muduo::Singleton<ConnectionData>::instance().sendMessageCount.addAndGet(1);
+    } else {
+        LOG_INFO << "unknown message type, do nothing";
+    }
+}
+
+
+//根据文件名重发数据包
+void MessageHandler::resend(const muduo::net::TcpConnectionPtr& conn, uint8_t messageType, string file_path) {
+    LOG_INFO 
+        << "========================resend=========================="; 
+	LOG_INFO 
+        << "make"; 
+    boost::shared_ptr<Message> message = MessageHandler::make(messageType, true);
+	//读文件覆盖body 内容
+	char encodedBuf[MESSAGE_MAXIMUM_LENGTH] = "";
+	long encodedBufLength = outFile(encodedBuf, file_path);
+	LOG_INFO
+			<<"\n\n\n\nresend  "<<encodedBufLength<<"\n"<<encodedBuf<<"\n\n\n\n";
+    
+//    xer_fprint(stdout, message->asnType, message->body);            
+    
+    if (message != NULL) {
+        muduo::net::Buffer b;
+        MessageEncoder::reencode(&b, message.get(), encodedBuf, encodedBufLength);
+        muduo::StringPiece sp = b.toStringPiece();                    
+        std::stringstream ss;
+        ss
+            << "encode, " 
+            << sp.size() 
+            << ", 0x" 
+            << std::hex
+            << sp.size()
+            << " byte, 0x"
+            << CommonUtility::byteArrayToHexString(sp.data(), sp.size())
+            << ", send, "
+            << message->toString(); 
+		
+        LOG_INFO << ss.str();  
+    	
+        conn->send(&b);     
+        LOG_INFO 
+            << "send message count=" 
+            << muduo::Singleton<ConnectionData>::instance().sendMessageCount.addAndGet(1);
+    } else {
+        LOG_INFO << "unknown message type, do nothing";
+    }
+}
+
+
+
+
+
+
+void MessageHandler::setLoginRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_NONE;
+
+    LoginRequestBody* bodyType = static_cast<LoginRequestBody*>(message->body);
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+LOG_INFO<<"vidBuffer length "<<muduo::Singleton<ConnectionData>::instance().vid.length();
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+
+    char* vinBuffer = new char[muduo::Singleton<ConnectionData>::instance().vin.length()];
+LOG_INFO<<"vinBuffer length "<<muduo::Singleton<ConnectionData>::instance().vin.length();
+
+    memcpy(
+        vinBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vin.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vin.length());
+    bodyType->vin.buf = (uint8_t*)vinBuffer;
+    bodyType->vin.size = muduo::Singleton<ConnectionData>::instance().vin.length();
+
+    bodyType->msgCount = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    VisibleString_t* lcc1 = new VisibleString_t();
+    char* lcc1Buffer = new char[muduo::Singleton<ConnectionData>::instance().lcc1.length()];
+    memcpy(
+        lcc1Buffer, 
+        muduo::Singleton<ConnectionData>::instance().lcc1.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().lcc1.length());    
+    lcc1->buf = (uint8_t*)lcc1Buffer;
+    lcc1->size = muduo::Singleton<ConnectionData>::instance().lcc1.length();    
+    ASN_SEQUENCE_ADD(&(bodyType->chargeableSystemCode), lcc1);    
+    VisibleString_t* lcc2 = new VisibleString_t();
+    char* lcc2Buffer = new char[muduo::Singleton<ConnectionData>::instance().lcc2.length()];
+    memcpy(
+        lcc2Buffer, 
+        muduo::Singleton<ConnectionData>::instance().lcc2.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().lcc2.length());    
+    lcc2->buf = (uint8_t*)lcc2Buffer;
+    lcc2->size = muduo::Singleton<ConnectionData>::instance().lcc2.length();      
+    ASN_SEQUENCE_ADD(&(bodyType->chargeableSystemCode), lcc2);    
+
+    char* iccidBuffer = new char[muduo::Singleton<ConnectionData>::instance().iccid.length()];
+    memcpy(
+        iccidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().iccid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().iccid.length());
+    bodyType->iccid.buf = (uint8_t*)iccidBuffer;
+    bodyType->iccid.size = muduo::Singleton<ConnectionData>::instance().iccid.length();    
+    
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+
+    // rsa
+    muduo::Singleton<ConnectionData>::instance().generateRsa();
+    muduo::Singleton<ConnectionData>::instance().getRsaPublicKey();    
+    char* rsaPublicKeyBuffer = new char[muduo::Singleton<ConnectionData>::instance().rsaPublicKeyLength];
+    memcpy(
+        rsaPublicKeyBuffer, 
+        muduo::Singleton<ConnectionData>::instance().rsaPublicKey, 
+        muduo::Singleton<ConnectionData>::instance().rsaPublicKeyLength);    
+    bodyType->rsaPublicKey.buf = (uint8_t*)rsaPublicKeyBuffer;    
+    bodyType->rsaPublicKey.size = muduo::Singleton<ConnectionData>::instance().rsaPublicKeyLength;
+    LOG_INFO 
+        << "get rsa public key, 0x" 
+        << CommonUtility::byteArrayToHexString(
+            muduo::Singleton<ConnectionData>::instance().rsaPublicKey, 
+            muduo::Singleton<ConnectionData>::instance().rsaPublicKeyLength);                 
+}
+
+void MessageHandler::setLoginResponseMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_NONE;
+
+    LoginResponseBody* bodyType = static_cast<LoginResponseBody*>(message->body);    
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+    
+    bodyType->loginResult = 1;
+
+    char* tokenBuffer = new char[muduo::Singleton<ConnectionData>::instance().token.length()];
+    memcpy(
+        tokenBuffer, 
+        muduo::Singleton<ConnectionData>::instance().token.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().token.length());
+    bodyType->token.buf = (uint8_t*)tokenBuffer;
+    bodyType->token.size = muduo::Singleton<ConnectionData>::instance().token.length();     
+
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp(); 
+
+    char* aesSecretKeyExampleBuffer = new char[muduo::Singleton<ConnectionData>::instance().aesSecretKeyExampleLength];
+    memcpy(
+        aesSecretKeyExampleBuffer, 
+        muduo::Singleton<ConnectionData>::instance().aesSecretKeyExample, 
+        muduo::Singleton<ConnectionData>::instance().aesSecretKeyExampleLength);
+    bodyType->ciphertextThatRsaPublicKeyEncryptAesSecretKey.buf = (uint8_t*)aesSecretKeyExampleBuffer;
+    bodyType->ciphertextThatRsaPublicKeyEncryptAesSecretKey.size = muduo::Singleton<ConnectionData>::instance().aesSecretKeyExampleLength;
+}
+
+void MessageHandler::setSyncRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    SyncRequestBody* bodyType = static_cast<SyncRequestBody*>(message->body);    
+    
+    bodyType->msgCount = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    char* tokenBuffer = new char[muduo::Singleton<ConnectionData>::instance().token.length()];
+    memcpy(
+        tokenBuffer, 
+        muduo::Singleton<ConnectionData>::instance().token.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().token.length());
+    bodyType->token.buf = (uint8_t*)tokenBuffer;
+    bodyType->token.size = muduo::Singleton<ConnectionData>::instance().token.length();     
+}
+
+void MessageHandler::setSyncResponseMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;
+
+    SyncResponseBody* bodyType = static_cast<SyncResponseBody*>(message->body);     
+    
+    bodyType->syncResult = 1;
+    bodyType->serverTime = muduo::Singleton<CollectData>::instance().collectTimestamp();
+}
+
+void MessageHandler::setSmartCanRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);    
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    SmartCanRequestBody* bodyType = static_cast<SmartCanRequestBody*>(message->body); 
+    
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+
+    bodyType->isautoDrive = 0;
+}
+
+void MessageHandler::setSmartCanResponseMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    SmartCanResponseBody* bodyType = static_cast<SmartCanResponseBody*>(message->body); 
+
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+
+    bodyType->msgStatus = 1;
+
+    bodyType->errorCode = 0;    
+}
+
+void MessageHandler::setLogoutRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;
+
+    LogoutRequestBody* bodyType = static_cast<LogoutRequestBody*>(message->body);
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+    
+    bodyType->msgCount = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    char* tokenBuffer = new char[muduo::Singleton<ConnectionData>::instance().token.length()];
+    memcpy(
+        tokenBuffer, 
+        muduo::Singleton<ConnectionData>::instance().token.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().token.length());
+    bodyType->token.buf = (uint8_t*)tokenBuffer;
+    bodyType->token.size = muduo::Singleton<ConnectionData>::instance().token.length();     
+    
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+}
+
+void MessageHandler::setLogoutResponseMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;
+
+    LogoutResponseBody* bodyType = static_cast<LogoutResponseBody*>(message->body);    
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+
+    bodyType->logoutResult = 1;    
+
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+}
+
+void MessageHandler::setV2xBsmRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+//    message->header.cryptoType = CRYPTO_TYPE_NONE;
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    V2xBsmRequestBody* bodyType = static_cast<V2xBsmRequestBody*>(message->body);        
+
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();            
+    
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();                       
+
+    for (int i = 0; i < 2; ++i) {
+        ASN_SEQUENCE_ADD(&(bodyType->v2xBsmRequestList), MessageHandler::setV2xBsmRequestElement(i));        
+    }
+}
+
+void MessageHandler::setV2xBsmResponseMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_AES;
+
+    V2xBsmResponseBody* bodyType = static_cast<V2xBsmResponseBody*>(message->body);    
+
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();   
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+    bodyType->vid.buf = (uint8_t*)vidBuffer;
+    bodyType->vid.size = muduo::Singleton<ConnectionData>::instance().vid.length();    
+
+    bodyType->msgStatus = 1;
+
+    bodyType->errorCode = 0;
+}
+
+void MessageHandler::setDemoRequestMessage(boost::shared_ptr<Message>& message) {
+    message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+    message->header.cryptoType = CRYPTO_TYPE_NONE;
+
+    DemoRequestBody* bodyType = static_cast<DemoRequestBody*>(message->body);        
+
+    bodyType->height = 777;    
+    
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());    
+    bodyType->width.buf = (uint8_t*)vidBuffer;
+    bodyType->width.size = muduo::Singleton<ConnectionData>::instance().vid.length();
+}
+
+V2xBsmRequestElement* MessageHandler::setV2xBsmRequestElement(int index) {
+    V2xBsmRequestElement* v2xBsmRequestElement = new V2xBsmRequestElement();    
+    
+    v2xBsmRequestElement->msgCnt = index;
+
+    v2xBsmRequestElement->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();               
+
+    v2xBsmRequestElement->plateNo = new OCTET_STRING_t();
+    char* plateNoBuffer = new char[muduo::Singleton<ConnectionData>::instance().plateNo.length()];
+    memcpy(
+        plateNoBuffer, 
+        muduo::Singleton<ConnectionData>::instance().plateNo.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().plateNo.length());
+    v2xBsmRequestElement->plateNo->buf = (uint8_t*)plateNoBuffer;
+    v2xBsmRequestElement->plateNo->size = muduo::Singleton<ConnectionData>::instance().plateNo.length();      
+
+    v2xBsmRequestElement->secMark = muduo::Singleton<CollectData>::instance().collectDSecond();
+
+    v2xBsmRequestElement->pos.lat = muduo::Singleton<CollectData>::instance().collectLatitude();
+    v2xBsmRequestElement->pos.Long = muduo::Singleton<CollectData>::instance().collectLongitude();
+    v2xBsmRequestElement->pos.elevation = new Elevation_t(muduo::Singleton<CollectData>::instance().collectElevation());
+
+    v2xBsmRequestElement->accuracy.pos = muduo::Singleton<CollectData>::instance().collectPositionConfidence();
+    v2xBsmRequestElement->accuracy.elevation = new ElevationConfidence_t(muduo::Singleton<CollectData>::instance().collectElevationConfidence());
+
+    v2xBsmRequestElement->transmission = muduo::Singleton<CollectData>::instance().collectTransmissionState();
+
+    v2xBsmRequestElement->speed = muduo::Singleton<CollectData>::instance().collectSpeed();
+
+    v2xBsmRequestElement->heading = muduo::Singleton<CollectData>::instance().collectHeading();
+
+    v2xBsmRequestElement->angle = new SteeringWheelAngle_t(muduo::Singleton<CollectData>::instance().collectSteeringWheelAngle());
+    
+    v2xBsmRequestElement->motionCfd = new MotionConfidenceSet();
+    v2xBsmRequestElement->motionCfd->speedCfd = new SpeedConfidence_t(muduo::Singleton<CollectData>::instance().collectSpeedConfidence());
+    v2xBsmRequestElement->motionCfd->headingCfd = new HeadingConfidence_t(muduo::Singleton<CollectData>::instance().collectHeadingConfidence());
+    v2xBsmRequestElement->motionCfd->steerCfd = new SteeringWheelAngleConfidence_t(muduo::Singleton<CollectData>::instance().collectSteeringWheelAngleConfidence());
+
+    v2xBsmRequestElement->accelSet.Long = muduo::Singleton<CollectData>::instance().collectAcceleration();
+    v2xBsmRequestElement->accelSet.lat = muduo::Singleton<CollectData>::instance().collectAcceleration();
+    v2xBsmRequestElement->accelSet.vert = muduo::Singleton<CollectData>::instance().collectVerticalAcceleration();
+    v2xBsmRequestElement->accelSet.yaw = muduo::Singleton<CollectData>::instance().collectYawRate();
+
+    v2xBsmRequestElement->brakes.brakePadel = new BrakePedalStatus_t(muduo::Singleton<CollectData>::instance().collectBrakePedalStatus());
+    v2xBsmRequestElement->brakes.wheelBrakes = new BrakeAppliedStatus_t();
+    v2xBsmRequestElement->brakes.wheelBrakes->buf = new uint8_t(muduo::Singleton<CollectData>::instance().collectBrakeAppliedStatus());
+    v2xBsmRequestElement->brakes.wheelBrakes->size = 1;
+    v2xBsmRequestElement->brakes.traction = new TractionControlStatus_t(muduo::Singleton<CollectData>::instance().collectTractionControlStatus());
+    v2xBsmRequestElement->brakes.abs = new AntiLockBrakeStatus_t(muduo::Singleton<CollectData>::instance().collectAntiLockBrakeStatus());
+    v2xBsmRequestElement->brakes.scs = new StabilityControlStatus_t(muduo::Singleton<CollectData>::instance().collectStabilityControlStatus());    
+    v2xBsmRequestElement->brakes.brakeBoost = new BrakeBoostApplied_t(muduo::Singleton<CollectData>::instance().collectBrakeBoostApplied());    
+    v2xBsmRequestElement->brakes.auxBrakes = new AuxiliaryBrakeStatus_t(muduo::Singleton<CollectData>::instance().collectAuxiliaryBrakeStatus());    
+
+    v2xBsmRequestElement->size.length = muduo::Singleton<CollectData>::instance().collectVehicleSizeLength();
+    v2xBsmRequestElement->size.width = muduo::Singleton<CollectData>::instance().collectVehicleSizeWidth();
+    v2xBsmRequestElement->size.height = new VehicleHeight_t(muduo::Singleton<CollectData>::instance().collectVehicleSizeHeight());
+
+    v2xBsmRequestElement->vehicleClass.classification = muduo::Singleton<CollectData>::instance().collectBasicVehicleClass();
+
+    v2xBsmRequestElement->safetyExt = new VehicleSafetyExtensions();
+    v2xBsmRequestElement->safetyExt->events = new VehicleEventFlags_t();
+    v2xBsmRequestElement->safetyExt->events->buf = new uint8_t(muduo::Singleton<CollectData>::instance().collectVehicleEventFlags());
+    v2xBsmRequestElement->safetyExt->events->size = 1;    
+    
+    v2xBsmRequestElement->safetyExt->pathHistory = new PathHistory();
+    v2xBsmRequestElement->safetyExt->pathHistory->initialPosition = new FullPositionVector();
+    v2xBsmRequestElement->safetyExt->pathHistory->initialPosition->pos.lat = muduo::Singleton<CollectData>::instance().collectLatitude();
+    v2xBsmRequestElement->safetyExt->pathHistory->initialPosition->pos.Long = muduo::Singleton<CollectData>::instance().collectLongitude();
+    v2xBsmRequestElement->safetyExt->pathHistory->initialPosition->pos.elevation = new Elevation_t(muduo::Singleton<CollectData>::instance().collectElevation());        
+    v2xBsmRequestElement->safetyExt->pathHistory->currGNSSstatus = new GNSSstatus_t();
+    v2xBsmRequestElement->safetyExt->pathHistory->currGNSSstatus->buf = new uint8_t(muduo::Singleton<CollectData>::instance().collectGNSSstatus());
+    v2xBsmRequestElement->safetyExt->pathHistory->currGNSSstatus->size = 1;      
+    PathHistoryPoint* php = new PathHistoryPoint();
+    php->llvOffset.offsetLL.present = (PositionOffsetLL_PR)muduo::Singleton<CollectData>::instance().collectPositionOffsetLlPr();
+    if (PositionOffsetLL_PR_position_LL1 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl1();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl1();
+    } else if (PositionOffsetLL_PR_position_LL2 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl2();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl2();
+    } else if (PositionOffsetLL_PR_position_LL3 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl3();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl3();
+    } else if (PositionOffsetLL_PR_position_LL4 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl4();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl4();
+    } else if (PositionOffsetLL_PR_position_LL5 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl5();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl5();
+    } else if (PositionOffsetLL_PR_position_LL6 == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl6();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectPositionOffsetLl6();
+    } else if (PositionOffsetLL_PR_position_LatLon == php->llvOffset.offsetLL.present) {
+        php->llvOffset.offsetLL.choice.position_LL1.lon = muduo::Singleton<CollectData>::instance().collectLongitude();
+        php->llvOffset.offsetLL.choice.position_LL1.lat = muduo::Singleton<CollectData>::instance().collectLatitude();
+    }        
+    php->llvOffset.offsetV = new VerticalOffset();
+    php->llvOffset.offsetV->present = (VerticalOffset_PR)muduo::Singleton<CollectData>::instance().collectVerticalOffsetPr();
+    if (VerticalOffset_PR_offset1 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset1 = muduo::Singleton<CollectData>::instance().collectVerticalOffset1();                
+    } else if (VerticalOffset_PR_offset2 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset2 = muduo::Singleton<CollectData>::instance().collectVerticalOffset2();                    
+    } else if (VerticalOffset_PR_offset3 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset3 = muduo::Singleton<CollectData>::instance().collectVerticalOffset3();                    
+    } else if (VerticalOffset_PR_offset4 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset4 = muduo::Singleton<CollectData>::instance().collectVerticalOffset4();                    
+    } else if (VerticalOffset_PR_offset5 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset5 = muduo::Singleton<CollectData>::instance().collectVerticalOffset5();                    
+    } else if (VerticalOffset_PR_offset6 == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.offset6 = muduo::Singleton<CollectData>::instance().collectVerticalOffset6();                    
+    } else if (VerticalOffset_PR_elevation == php->llvOffset.offsetV->present) {
+        php->llvOffset.offsetV->choice.elevation = muduo::Singleton<CollectData>::instance().collectElevation();                    
+    }    
+    php->timeOffset = muduo::Singleton<CollectData>::instance().collectTimeOffset();
+    php->speed = new Speed_t(muduo::Singleton<CollectData>::instance().collectSpeed());
+    php->posAccuracy = new PositionConfidenceSet();
+    php->posAccuracy->pos = muduo::Singleton<CollectData>::instance().collectElevationConfidence();
+    php->posAccuracy->elevation = new ElevationConfidence_t(muduo::Singleton<CollectData>::instance().collectElevationConfidence());    
+    php->heading = new CoarseHeading_t(muduo::Singleton<CollectData>::instance().collectCoarseHeading());
+    ASN_SEQUENCE_ADD(&(v2xBsmRequestElement->safetyExt->pathHistory->crumbData), php);    
+    
+    v2xBsmRequestElement->safetyExt->pathPrediction = new PathPrediction();
+    v2xBsmRequestElement->safetyExt->pathPrediction->radiusOfCurve = muduo::Singleton<CollectData>::instance().collectRadiusOfCurvature();
+    v2xBsmRequestElement->safetyExt->pathPrediction->confidence = muduo::Singleton<CollectData>::instance().collectConfidence();
+    v2xBsmRequestElement->safetyExt->lights = new ExteriorLights_t();
+    v2xBsmRequestElement->safetyExt->lights->buf = new uint8_t(muduo::Singleton<CollectData>::instance().collectExteriorLights());
+    v2xBsmRequestElement->safetyExt->lights->size = 1;          
+
+    return v2xBsmRequestElement;
+}
+
+
+
+
+void MessageHandler::setV2xRsiRequestMessage(boost::shared_ptr<Message>& message) 
+{
+	//no need for now
+}
+
+void MessageHandler::setV2xRsiResponseMessage(boost::shared_ptr<Message>& message) 
+{
+	//need
+	message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+//    message->header.cryptoType = CRYPTO_TYPE_NONE;
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    V2xRsiResponseBody* bodyType = static_cast<V2xRsiResponseBody*>(message->body);        
+
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+
+	bodyType->msgStatus = 1;
+	bodyType->errorCode = 0;
+	bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+	
+}
+
+void MessageHandler::setV2xEventRequestMessage(boost::shared_ptr<Message>& message) 
+{
+	message->header.vin.assign(muduo::Singleton<ConnectionData>::instance().vin);
+//    message->header.cryptoType = CRYPTO_TYPE_NONE;
+    message->header.cryptoType = CRYPTO_TYPE_AES;    
+
+    V2xEventRequestBody* bodyType = static_cast<V2xEventRequestBody*>(message->body);        
+
+    bodyType->msgCnt = muduo::Singleton<CollectData>::instance().collectMessageCount();
+
+    char* vidBuffer = new char[muduo::Singleton<ConnectionData>::instance().vid.length()];
+    memcpy(
+        vidBuffer, 
+        muduo::Singleton<ConnectionData>::instance().vid.c_str(), 
+        muduo::Singleton<ConnectionData>::instance().vid.length());
+
+
+	bodyType->hid.buf = new uint8_t[8];
+	memcpy(
+		bodyType->hid.buf,
+		muduo::Singleton<ConnectionData>::instance().vid.c_str(),
+		17);
+	bodyType->hid.size = 8;
+
+	bodyType->rid.buf = new uint8_t[8];
+	memcpy(
+		bodyType->rid.buf,
+		"a1234567887654321",
+		17);
+	bodyType->rid.size = 8;
+
+	
+	bodyType->event = 1;
+	bodyType->dist = 2;
+	bodyType->direct = 3;
+	bodyType->alarmLv = 1;
+	bodyType->hlon = 5;
+	bodyType->hlat = 6;
+	bodyType->hspeed = 7;
+	bodyType->hdirect = 8;
+	bodyType->hevel = 9;
+	bodyType->rlon = 10;
+	bodyType->rlat = 11;
+	bodyType->rspeed = 12;
+	bodyType->rdirect = 13;
+	bodyType->revel = 14;
+	bodyType->timestamp = muduo::Singleton<CollectData>::instance().collectTimestamp();
+	
+	
+	
+}
+
+void MessageHandler::setV2xEventResponseMessage(boost::shared_ptr<Message>& message) 
+{
+	//no need for now
+}
+
+
+
